@@ -50,10 +50,7 @@ public class TaiKhoan {
     }
     
     public ArrayList<TaiKhoan> getAll() throws SQLException, ClassNotFoundException{
-        Class.forName("com.mysql.jdbc.Driver");  
-        var connection = DriverManager.getConnection(  
-                    "jdbc:mysql://localhost/" + Configuration.dbname,Configuration.user,
-                    Configuration.password);
+        var connection = getConnection();
         var stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery("select * from students");
             // show data
@@ -64,4 +61,16 @@ public class TaiKhoan {
             connection.close();
         return new ArrayList<TaiKhoan>();
     }  
+    
+    private Connection getConnection()throws SQLException, ClassNotFoundException{
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection connection = null;
+        
+        if (Configuration.dbtype == "mysql"){
+            return connection = DriverManager.getConnection(  
+                    "jdbc:mysql://localhost/" + Configuration.dbname,Configuration.user,
+                    Configuration.password);
+        }
+        return DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QLPT;user=nhom5;password=12345678;encrypt=false");
+    }
 }

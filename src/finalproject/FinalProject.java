@@ -4,6 +4,7 @@
  */
 package finalproject;
 
+import finalproject.app.users.DangNhapFrame;
 import java.util.*;
 import java.sql.*;
 import java.util.logging.Level;
@@ -17,14 +18,10 @@ public class FinalProject {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws ClassNotFoundException {
+
+    public static void main(String[] args) throws ClassNotFoundException  {
         // TODO code application logic here
-        var a = new finalproject.Models.TaiKhoan();
-        try {
-            a.getAll();
-        } catch (SQLException ex) {
-            Logger.getLogger(FinalProject.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        var dangNhapFrame = new DangNhapFrame();
         
     }
 }

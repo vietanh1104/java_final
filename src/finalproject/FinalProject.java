@@ -21,7 +21,7 @@ public class FinalProject {
 
     public static void main(String[] args) throws ClassNotFoundException  {
         // TODO code application logic here
-        var updateFrame = new UpdateInfoFrame();
+        new DangNhapFrame();
         
     }
 }

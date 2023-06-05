@@ -1,24 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package finalproject.app.users;
 
-import java.awt.*;
 import javax.swing.*; 
 import finalproject.app.Main_component;
 
 
 public class DangNhapFrame {
     public DangNhapFrame(){
-        JFrame dangNhapFrame = new JFrame("Phần mềm quản lí phòng trọ");
+        JFrame dangNhapFrame = new JFrame("Phần mềm quản lí phòng trọ");       
+        JLabel loginLb = new JLabel("Tài khoản");
+        loginLb.setBounds(0, 0, 200, 50);
+        JTextField accountIp = new JTextField();
+        accountIp.setBounds(250, 200, 300, 40);
+        JPasswordField passwordIp = new JPasswordField();
+        passwordIp.setBounds(250, 400, 300, 40);
+        passwordIp.setEchoChar('*');
         var main_component = new Main_component("Đăng Nhập");
         dangNhapFrame.add(main_component);
-        JLabel loginLb = new JLabel("Tài khoản");
-        loginLb.setBounds(300, 150, 200, 50);
-        loginLb.setForeground(new Color(185, 232, 97));
         main_component.add(loginLb);
+        main_component.add(accountIp);
+        main_component.add(passwordIp);
         dangNhapFrame.setBounds(200, 100, 800, 600);
+        dangNhapFrame.setResizable(false);
         dangNhapFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         dangNhapFrame.setVisible(true);
     }

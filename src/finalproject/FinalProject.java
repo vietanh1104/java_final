@@ -4,7 +4,7 @@
  */
 package finalproject;
 
-import finalproject.app.users.DangNhapFrame;
+import finalproject.app.users.*;
 import java.util.*;
 import java.sql.*;
 import java.util.logging.Level;
@@ -21,7 +21,7 @@ public class FinalProject {
 
     public static void main(String[] args) throws ClassNotFoundException  {
         // TODO code application logic here
-        var dangNhapFrame = new DangNhapFrame();
+        var updateFrame = new UpdateInfoFrame();
         
     }
 }

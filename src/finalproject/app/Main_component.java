@@ -12,6 +12,7 @@ public class Main_component extends JComponent{
     public Main_component(String text){
         this.text = text;
     }
+    @Override
     public void paint(Graphics g) {        
         Graphics2D graphics2 = (Graphics2D) g;
         graphics2.setColor(new Color(0,202,177));

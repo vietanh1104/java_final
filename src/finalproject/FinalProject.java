@@ -8,6 +8,8 @@ import java.util.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import finalproject.app.users.*;
+import finalproject.app.admin.*;
 /**
  *
  * @author anhvi
@@ -19,12 +21,7 @@ public class FinalProject {
      */
     public static void main(String[] args) throws ClassNotFoundException  {
         // TODO code application logic here
-        var a = new finalproject.Models.TaiKhoan();
-        try {
-            a.getAll();
-        } catch (SQLException ex) {
-            Logger.getLogger(FinalProject.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        var a = new adminRoomAddingScreen();
         
     }
 }

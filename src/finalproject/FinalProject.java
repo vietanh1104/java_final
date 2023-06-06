@@ -4,7 +4,9 @@
  */
 package finalproject;
 
+import finalproject.app.admin.UsersManagementFrame;
 import finalproject.app.users.*;
+import finalproject.app.admin.*;
 /**
  *
  * @author anhvi
@@ -17,7 +19,7 @@ public class FinalProject {
 
     public static void main(String[] args) throws ClassNotFoundException  {
         // TODO code application logic here
-        new ThanhToanFrame();
+        new UsersManagementFrame();
         
     }
 }

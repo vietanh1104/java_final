@@ -21,7 +21,7 @@ public class FinalProject {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         // TODO code application logic here
         int idKH = 1;
-        var res = new adminViewListRoomScreen();
+        var res = new adminBillViewDetailScreen();
         
     }
 }

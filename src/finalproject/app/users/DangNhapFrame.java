@@ -1,85 +1,70 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package finalproject.app.users;
 
 import java.awt.*;
-import javax.swing.*; 
-import javax.swing.border.*;
+import javax.swing.*;
 
+/**
+ *
+ * @author Dell
+ */
+public class DangNhapFrame extends JFrame {
 
-class DangNhapComponent extends JComponent{
-    private String text;
-    public DangNhapComponent(String text){
-        this.text = text;
-    }
-    @Override
-    public void paint(Graphics g){
-        Graphics2D graphics2 = (Graphics2D) g;
-        graphics2.setColor(new Color(0,202,177));
-        graphics2.fillRoundRect(17, 100, 750, 445, 10, 10);
+    public DangNhapFrame() {
+        JFrame dangNhapFrame = new JFrame("Phòng trọ Nhóm 5");
+        dangNhapFrame.setBounds(200, 100, 800, 600);
         
-        graphics2.setColor(new Color(0,4,2));
-        graphics2.setStroke(new BasicStroke(1));
+        JPanel pn = new JPanel();
+        pn.setLayout(null);
+        pn.setBounds(200, 100, 400, 300);
+        pn.setBackground(new Color(0, 202, 177));
         
-        graphics2.drawRoundRect(17, 100, 750, 445, 10, 10);
+        Font font = new Font("Inter", Font.BOLD, 35);
+        JLabel lb1 = new JLabel("Đăng Nhập");
+        lb1.setForeground(Color.white);
+        lb1.setFont(font);
+        lb1.setHorizontalAlignment(SwingConstants.CENTER);
+        lb1.setBounds(100,15,200,40);
+        pn.add(lb1);
         
-        
-        // Set the font and color for the text
-        Font font = new Font("Arial", Font.PLAIN, 48);
-        graphics2.setFont(font);
-        graphics2.setColor(Color.BLACK);
-        
-        // Calculate the position to center the text
-        FontMetrics fm = graphics2.getFontMetrics(font);
-        int textWidth = fm.stringWidth(text);
-        int textX = (800 - textWidth) / 2;
-            
-        // Draw the text
-        graphics2.drawString(text, textX, 70);
-        //label Tai khoan
-        String label = "Tài Khoản";
-        font = new Font("Arial", Font.PLAIN, 30);
-        graphics2.setFont(font);
-        graphics2.setColor(Color.BLACK);
-            
-        // Draw the text
-        graphics2.drawString(label, 250, 170);
+        font = new Font("Inter", Font.BOLD, 18);
+        JLabel lb2 = new JLabel("Tên Đăng Nhập:");
+        lb2.setForeground(Color.white);
+        lb2.setFont(font);
+        lb2.setBounds(125, 50, 150, 40);
+        lb2.setHorizontalAlignment(SwingConstants.CENTER);
+        pn.add(lb2);
         
         JTextField accountIp = new JTextField();
-        accountIp.setHorizontalAlignment(SwingConstants.LEFT);
-        accountIp.setBounds(250, 200, 300, 46);
-        // Create a rounded border
-        Border roundedBorder = BorderFactory.createLineBorder(Color.BLACK, 1, true);
-        int borderRadius = 10; // Adjust the value to control the border radius
-        Border compoundBorder = BorderFactory.createCompoundBorder(roundedBorder, BorderFactory.createEmptyBorder(0, borderRadius, 0, borderRadius));
-        accountIp.setBorder(compoundBorder);
-        add(accountIp);
-        //label Tai khoan
-        String label1 = "Mật Khẩu";
-            
-        // Draw the text
-        graphics2.drawString(label1, 250, 300);
+        accountIp.setBounds(50, 100, 300, 40);
+        pn.add(accountIp);
+        
+        JLabel lb3 = new JLabel("Mật Khẩu:");
+        lb3.setForeground(Color.white);
+        lb3.setFont(font);
+        lb3.setBounds(125, 150, 150, 40);
+        lb3.setHorizontalAlignment(SwingConstants.CENTER);
+        pn.add(lb3);
         
         JPasswordField passwordIp = new JPasswordField();
         passwordIp.setEchoChar('*');
-        passwordIp.setHorizontalAlignment(SwingConstants.LEFT);
-        passwordIp.setBounds(250, 330, 300, 46);
-        // Create a rounded border
-        passwordIp.setBorder(compoundBorder);
-        add(passwordIp);
-        JButton loginBt = new JButton("Đăng nhập");
-        loginBt.setBounds(350, 400, 100, 50);
-        add(loginBt);
-    }
-}
-
-public class DangNhapFrame {
-    public DangNhapFrame(){
-        JFrame dangNhapFrame = new JFrame("Phần mềm quản lí phòng trọ");       
-        var main_component = new DangNhapComponent("Đăng Nhập");
-        dangNhapFrame.add(main_component);
-        dangNhapFrame.setBounds(200, 100, 800, 600);
-        dangNhapFrame.setResizable(false);
+        passwordIp.setBounds(50, 200, 300, 40);
+        pn.add(passwordIp);
+        
+        JButton bt = new JButton("Đăng nhập");
+        bt.setBounds(150, 250, 100, 40);
+        bt.setBackground(new Color(255, 155, 73));
+        bt.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        pn.add(bt);
+        
+        dangNhapFrame.add(pn);
         dangNhapFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        dangNhapFrame.setLayout(null);
         dangNhapFrame.setVisible(true);
+        dangNhapFrame.setResizable(false);
     }
-    
+
 }

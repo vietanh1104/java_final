@@ -5,10 +5,6 @@
 package finalproject;
 
 import finalproject.app.users.*;
-import java.util.*;
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author anhvi
@@ -21,7 +17,7 @@ public class FinalProject {
 
     public static void main(String[] args) throws ClassNotFoundException  {
         // TODO code application logic here
-        new DangNhapFrame();
+        new ThanhToanFrame();
         
     }
 }

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package finalproject.app.admin;
+import finalproject.Models.PhongTro;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +11,7 @@ import javax.swing.*;
 import javax.swing.border.*;  
 import java.awt.image.BufferedImage;
 import java.io.*;
+import java.sql.SQLException;
 import javax.imageio.*;
 /**
  *
@@ -116,23 +118,16 @@ class adminRoomEditingMainContent extends JComponent{
 }
 
 public class adminRoomEdittingScreen {
-    private final String roomId;
-    private final String address;
-    private final String status;
-    private final String infrastructure;
-    private final String image;
-    public adminRoomEdittingScreen(String roomId, String address, String status, String infrastructure, String image){
-        this.roomId = roomId;
-        this.address = address;
-        this.status = status;
-        this.infrastructure = infrastructure;
-        this.image = image;
+
+    public adminRoomEdittingScreen(int idKH) throws ClassNotFoundException, SQLException{
+        var a = new PhongTro();
+        PhongTro roomDetail = a.getDetailRoom(idKH);
         var frame = new JFrame("Phần mềm quản lý phòng trọ");
         String windowContent = "Sửa thông tin phòng";
-        adminRoomEditingMainContent main_component = new adminRoomEditingMainContent(windowContent, this.image) ;
+        adminRoomEditingMainContent main_component = new adminRoomEditingMainContent(windowContent, "room201.jpg") ;
         
         // roomId
-        JTextField roomIdTextField = new JTextField(this.roomId);
+        JTextField roomIdTextField = new JTextField(roomDetail.getSo_phong());
         roomIdTextField.setHorizontalAlignment(SwingConstants.LEFT);
         roomIdTextField.setForeground(Color.BLACK); // Set the font color
         roomIdTextField.setBackground(Color.WHITE); // Set the background color
@@ -146,7 +141,8 @@ public class adminRoomEdittingScreen {
         frame.add(roomIdTextField);
         
         // address   
-        JTextField addressTextField = new JTextField(this.address);
+        JTextField addressTextField = new JTextField("666, phố Nguyên Xá, Minh Khai, Bắc Từ Liêm");
+        addressTextField.setEditable(false);
         addressTextField.setHorizontalAlignment(SwingConstants.LEFT);
         addressTextField.setForeground(Color.BLACK); // Set the font color
         addressTextField.setBackground(Color.WHITE); // Set the background color
@@ -157,7 +153,7 @@ public class adminRoomEdittingScreen {
         frame.add(addressTextField);
         
         // status
-        JTextField statusTextField = new JTextField(this.status);
+        JTextField statusTextField = new JTextField(roomDetail.getTinh_trang_su_dung());
         statusTextField.setHorizontalAlignment(SwingConstants.LEFT);
         statusTextField.setForeground(Color.BLACK); // Set the font color
         statusTextField.setBackground(Color.WHITE); // Set the background color
@@ -168,7 +164,7 @@ public class adminRoomEdittingScreen {
         frame.add(statusTextField);
         
         // infrastructure
-        JTextField infrastructureTextField = new JTextField(this.infrastructure);
+        JTextField infrastructureTextField = new JTextField(roomDetail.getCo_so_vat_chat());
         infrastructureTextField.setHorizontalAlignment(SwingConstants.LEFT);
         infrastructureTextField.setForeground(Color.BLACK); // Set the font color
         infrastructureTextField.setBackground(Color.WHITE); // Set the background color

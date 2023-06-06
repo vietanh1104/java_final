@@ -3,10 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package finalproject.app.users;
+import finalproject.Models.*;
+import finalproject.app.admin.adminRoomEdittingScreen;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.imageio.ImageIO;
 import javax.swing.*;  
 import javax.swing.border.*;  
@@ -16,13 +21,13 @@ import javax.swing.border.*;
  */
 class userRoomDetailMainContent extends JComponent{
     private String text;
-    private String roomId;
+    private int roomId;
     private String address;
     private String status;
     private String infrastructure;
     private String image;
 
-    public userRoomDetailMainContent(String text, String roomId, String address, String status, String infrastructure,
+    public userRoomDetailMainContent(String text, int roomId, String address, String status, String infrastructure,
             String image) {
         this.text = text;
         this.roomId = roomId;
@@ -173,25 +178,51 @@ class userRoomDetailMainContent extends JComponent{
     }
 }
 public class userRoomDetailScreen {
-    private final String roomId;
-    private final String address;
-    private final String status;
-    private final String infrastructure;
-    private final String image;
-    public userRoomDetailScreen(String roomId, String address, String status, String infrastructure, String image){
-        this.roomId = roomId;
-        this.address = address;
-        this.status = status;
-        this.infrastructure = infrastructure;
-        this.image = image;
+    public userRoomDetailScreen(int idKH) throws SQLException, ClassNotFoundException{
         var frame = new JFrame("Phần mềm quản lý phòng trọ");
         String windowContent = "Thông tin phòng";
-        userRoomDetailMainContent main_component = new userRoomDetailMainContent(windowContent,this.roomId,
-                this.address,this.status,this.infrastructure, this.image) ;
+        var a = new PhongTro();
+        PhongTro roomDetail = a.getDetailRoom(idKH);
+        int roomId = roomDetail.getSo_phong();
+        String address = "666, Phố Nguyên Xá, Minh Khai, Bắc Từ Liêm";
+        String status = roomDetail.getTinh_trang_su_dung();
+        String infrastructure = roomDetail.getCo_so_vat_chat();
+        String image = "room201.jpg";
+        userRoomDetailMainContent main_component = new userRoomDetailMainContent(windowContent,roomId,
+                address,status,infrastructure, image) ;
         frame.add(main_component);
-         
+        
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
+
+        JMenu fileMenu = new JMenu("File");
+
+        JMenuItem newMenuItem = new JMenuItem("New");
+        JMenuItem openMenuItem = new JMenuItem("Open");
+        JMenuItem saveMenuItem = new JMenuItem("Save");
+        JMenuItem exitMenuItem = new JMenuItem("Exit");
+
+        exitMenuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                
+            }
+        });
+            
+        fileMenu.add(newMenuItem);
+        fileMenu.add(openMenuItem);
+        fileMenu.add(saveMenuItem);
+        fileMenu.addSeparator();
+        fileMenu.add(exitMenuItem);
+
+        menuBar.add(fileMenu);
+
+
+        frame.setJMenuBar(menuBar);
+        
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true); // make window visible
     }
+
 }

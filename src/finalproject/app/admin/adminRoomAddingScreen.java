@@ -3,11 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package finalproject.app.admin;
+import java.sql.*;
 import java.awt.*;
 import javax.swing.*;  
 import javax.swing.border.*;  
 import java.awt.image.BufferedImage;
 import java.awt.event.*;
+import finalproject.Models.*;
 /**
  *
  * @author anhvi
@@ -86,9 +88,9 @@ class adminRoomAddingMainContent extends JComponent{
         // Draw the text
         graphics2.drawString(this.text, 80, 220);
         
-        // label Trạng thái
+        // label Khả năng sử dụng
         // Set the font and color for the text
-        text = "Trạng thái:";
+        text = "Khả năng sử dụng:";
         font = new Font("Arial", Font.PLAIN, 15);
         graphics2.setFont(font);
         graphics2.setColor(Color.BLACK);
@@ -105,6 +107,46 @@ class adminRoomAddingMainContent extends JComponent{
             
         // Draw the text
         graphics2.drawString(this.text, 80, 320);  
+        
+        // label Tiền phòng
+        // Set the font and color for the text
+        text = "Tiền phòng:";
+        font = new Font("Arial", Font.PLAIN, 15);
+        graphics2.setFont(font);
+        graphics2.setColor(Color.BLACK);
+            
+        // Draw the text
+        graphics2.drawString(this.text, 80, 368); 
+        
+        // label Tiền điện
+        // Set the font and color for the text
+        text = "Tiền điện:";
+        font = new Font("Arial", Font.PLAIN, 15);
+        graphics2.setFont(font);
+        graphics2.setColor(Color.BLACK);
+            
+        // Draw the text
+        graphics2.drawString(this.text, 80, 418);
+        
+        // label Tiền nước
+        // Set the font and color for the text
+        text = "Tiền nước:";
+        font = new Font("Arial", Font.PLAIN, 15);
+        graphics2.setFont(font);
+        graphics2.setColor(Color.BLACK);
+            
+        // Draw the text
+        graphics2.drawString(this.text, 380, 368); 
+        
+        // label Tiền phụ thu
+        // Set the font and color for the text
+        text = "Phụ thu:";
+        font = new Font("Arial", Font.PLAIN, 15);
+        graphics2.setFont(font);
+        graphics2.setColor(Color.BLACK);
+            
+        // Draw the text
+        graphics2.drawString(this.text, 380, 418);
     }
     private BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) {
             BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
@@ -123,7 +165,7 @@ public class adminRoomAddingScreen {
         adminRoomAddingMainContent main_component = new adminRoomAddingMainContent(windowContent) ;
         
         // roomId
-        JTextField roomIdTextField = new JTextField(" ");
+        JTextField roomIdTextField = new JTextField();
         roomIdTextField.setHorizontalAlignment(SwingConstants.LEFT);
         roomIdTextField.setForeground(Color.BLACK); // Set the font color
         roomIdTextField.setBackground(Color.WHITE); // Set the background color
@@ -138,7 +180,7 @@ public class adminRoomAddingScreen {
         
         
         // address   
-        JTextField addressTextField = new JTextField(" ");
+        JTextField addressTextField = new JTextField();
         addressTextField.setHorizontalAlignment(SwingConstants.LEFT);
         addressTextField.setForeground(Color.BLACK); // Set the font color
         addressTextField.setBackground(Color.WHITE); // Set the background color
@@ -149,7 +191,7 @@ public class adminRoomAddingScreen {
         frame.add(addressTextField);
         
         // status
-        JTextField statusTextField = new JTextField(" ");
+        JTextField statusTextField = new JTextField();
         statusTextField.setHorizontalAlignment(SwingConstants.LEFT);
         statusTextField.setForeground(Color.BLACK); // Set the font color
         statusTextField.setBackground(Color.WHITE); // Set the background color
@@ -161,7 +203,7 @@ public class adminRoomAddingScreen {
         
         
         // infrastructure
-        JTextField infrastructureTextField = new JTextField(" ");
+        JTextField infrastructureTextField = new JTextField();
         infrastructureTextField.setHorizontalAlignment(SwingConstants.LEFT);
         infrastructureTextField.setForeground(Color.BLACK); // Set the font color
         infrastructureTextField.setBackground(Color.WHITE); // Set the background color
@@ -171,17 +213,68 @@ public class adminRoomAddingScreen {
         infrastructureTextField.setBorder(compoundBorder);
         frame.add(infrastructureTextField);
         
+        // room price
+        JTextField roomPriceTextField = new JTextField();
+        roomPriceTextField.setHorizontalAlignment(SwingConstants.LEFT);
+        roomPriceTextField.setForeground(Color.BLACK); // Set the font color
+        roomPriceTextField.setBackground(Color.WHITE); // Set the background color
+
+        roomPriceTextField.setBounds(220, 338, 120, 46);
+        // Create a rounded border
+        roomPriceTextField.setBorder(compoundBorder);
+        frame.add(roomPriceTextField);
+        
+        // electric price
+        JTextField electricPriceTextField = new JTextField();
+        electricPriceTextField.setHorizontalAlignment(SwingConstants.LEFT);
+        electricPriceTextField.setForeground(Color.BLACK); // Set the font color
+        electricPriceTextField.setBackground(Color.WHITE); // Set the background color
+
+        electricPriceTextField.setBounds(220, 388, 120, 46);
+        // Create a rounded border
+        electricPriceTextField.setBorder(compoundBorder);
+        frame.add(electricPriceTextField);
+        
+        // water price
+        JTextField waterPriceTextField = new JTextField();
+        waterPriceTextField.setHorizontalAlignment(SwingConstants.LEFT);
+        waterPriceTextField.setForeground(Color.BLACK); // Set the font color
+        waterPriceTextField.setBackground(Color.WHITE); // Set the background color
+
+        waterPriceTextField.setBounds(500, 338, 120, 46);
+        // Create a rounded border
+        waterPriceTextField.setBorder(compoundBorder);
+        frame.add(waterPriceTextField);
+        
+        // extend price
+        JTextField extendPriceTextField = new JTextField();
+        extendPriceTextField.setHorizontalAlignment(SwingConstants.LEFT);
+        extendPriceTextField.setForeground(Color.BLACK); // Set the font color
+        extendPriceTextField.setBackground(Color.WHITE); // Set the background color
+
+        extendPriceTextField.setBounds(500, 388, 120, 46);
+        // Create a rounded border
+        extendPriceTextField.setBorder(compoundBorder);
+        frame.add(extendPriceTextField);
+        
         JButton button = new JButton("Thêm mới");
         button.setBackground(new Color(91, 253, 34));
         button.setBounds(620,480, 100, 45);
         
         button.addActionListener(new ActionListener() { 
-            public void actionPerformed(ActionEvent e) { 
-                String roomId = roomIdTextField.getText();
+            public void actionPerformed(ActionEvent e)  { 
+                int roomId = Integer.parseInt(roomIdTextField.getText().trim()) ;
                 String address = addressTextField.getText();
                 String status = statusTextField.getText();
                 String infrastructure = infrastructureTextField.getText();
-                System.out.print(roomId + address + status + infrastructure);
+                try{
+                    var a= new PhongTro(roomId, infrastructure, "Còn trống", "",2500000,3500,10000,100000);
+                    a.addingRoom(a);
+                }
+                catch(ClassNotFoundException | SQLException ex){
+                    ex.printStackTrace();
+                }
+                frame.setVisible(false);
             } 
         } );
         frame.add(button);

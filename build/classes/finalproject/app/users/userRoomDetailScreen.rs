@@ -1,3 +1,0 @@
-finalproject.app.users.userRoomDetailScreen
-finalproject.app.users.userRoomDetailMainContent
-finalproject.app.users.userRoomDetailScreen$1

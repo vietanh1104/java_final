@@ -120,8 +120,11 @@ public class HoaDon {
                 + " where hd.id = " +billId );
             // show data
         while(rs.first()){
-            return rs.getFloat(1);
+            float res = rs.getFloat(1);
+            connection.close();
+            return res;
         }
+        connection.close();
         return 0;
     }
     public void addingBill(HoaDon pt) throws SQLException, ClassNotFoundException{

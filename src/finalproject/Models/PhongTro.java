@@ -105,9 +105,6 @@ public class PhongTro {
         this.phu_thu = phu_thu;
     }
 
-
-    
-
     public PhongTro() throws ClassNotFoundException{
         Class.forName("com.mysql.jdbc.Driver");
     }
@@ -137,6 +134,7 @@ public class PhongTro {
             var res = new PhongTro( rs.getInt(2),rs.getString(3),
                 rs.getString(4),rs.getString(5),rs.getFloat(6), rs.getFloat(7),
                 rs.getFloat(8), rs.getFloat(9));
+            connection.close();
             return res;
         }
             
@@ -167,6 +165,7 @@ public class PhongTro {
                 rs.getFloat(8), rs.getFloat(9));
             a.add(res);
         }
+        connection.close();
         return a;
     }
     public void addingRoom(PhongTro pt) throws SQLException, ClassNotFoundException{
@@ -194,8 +193,10 @@ public class PhongTro {
             var res = new PhongTro( rs.getInt(2),rs.getString(3),
                 rs.getString(4),rs.getString(5),rs.getFloat(6), rs.getFloat(7),
                 rs.getFloat(8), rs.getFloat(9));
+            connection.close();
             return res;
         }
+        connection.close();
         return a;
     }
     

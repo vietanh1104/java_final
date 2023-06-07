@@ -137,8 +137,11 @@ public class KhachHang {
                 + " where pt.id = "+ roomId );
             // show data
         while(rs.first()){
-            return rs.getString(1);
+            String res = rs.getString(1);
+            connection.close();
+            return res;
         }
+        connection.close();
         return "";
     }
     private Connection getConnection()throws SQLException, ClassNotFoundException{

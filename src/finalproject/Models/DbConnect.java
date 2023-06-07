@@ -15,10 +15,11 @@ import java.sql.SQLException;
  */
 public class DbConnect {
     public static Connection getConnection()throws SQLException, ClassNotFoundException{
-        Class.forName("com.mysql.jdbc.Driver");
+        
         Connection connection = null;
         
         if (Configuration.dbtype == "mysql"){
+            Class.forName("com.mysql.jdbc.Driver");
             return connection = DriverManager.getConnection(  
                     "jdbc:mysql://localhost/" + Configuration.dbname,Configuration.user,
                     Configuration.password);

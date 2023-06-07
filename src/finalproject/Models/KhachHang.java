@@ -110,5 +110,4 @@ public class KhachHang {
     public void setTen_tai_khoan(String ten_tai_khoan) {
         this.ten_tai_khoan = ten_tai_khoan;
     }
-    
 }

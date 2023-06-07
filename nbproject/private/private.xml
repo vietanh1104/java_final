@@ -5,7 +5,10 @@
         <group>
             <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/FinalProject.java</file>
             <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/app/admin/UsersManagementFrame.java</file>
-            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/app/users/ThanhToanFrame.java</file>
+            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/app/admin/UserDetailFrame.java</file>
+            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/Models/DbConnect.java</file>
+            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/app/admin/AddUserFrame.java</file>
+            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/Models/KhachHang.java</file>
         </group>
     </open-files>
 </project-private>

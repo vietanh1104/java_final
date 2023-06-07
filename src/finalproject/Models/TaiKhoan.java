@@ -63,14 +63,15 @@ public class TaiKhoan {
     }  
     
     private Connection getConnection()throws SQLException, ClassNotFoundException{
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection connection = null;
         
+        Connection connection = null;
         if (Configuration.dbtype == "mysql"){
+            Class.forName("com.mysql.jdbc.Driver");
             return connection = DriverManager.getConnection(  
-                    "jdbc:mysql://localhost/" + Configuration.dbname,Configuration.user,
-                    Configuration.password);
+                    "jdbc:mysql://localhost/" + "qlpt","root",
+                    "");
         }
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         return DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QLPT;user=nhom5;password=12345678;encrypt=false");
     }
 }

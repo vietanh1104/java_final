@@ -4,10 +4,11 @@
  */
 package finalproject;
 
-import java.util.*;
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import finalproject.Models.*;
+import finalproject.app.admin.adminRoomAddingScreen;
+import java.sql.SQLException;
+import finalproject.app.users.*;
+import finalproject.app.admin.*;
 /**
  *
  * @author anhvi
@@ -17,14 +18,10 @@ public class FinalProject {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws ClassNotFoundException  {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
         // TODO code application logic here
-        var a = new finalproject.Models.TaiKhoan();
-        try {
-            a.getAll();
-        } catch (SQLException ex) {
-            Logger.getLogger(FinalProject.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        int idKH = 1;
+        var res = new adminViewListRoomScreen();
         
     }
 }

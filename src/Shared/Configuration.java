@@ -11,6 +11,11 @@ package Shared;
 public class Configuration {
     public static String user = "root";
     public static String password = "";
+<<<<<<< HEAD
     public static String dbname = "ptth";
     public static String dbtype = "sqlserver";
+=======
+    public static String dbname = "qlpt";
+    public static String dbtype = "mysql";
+>>>>>>> vanh
 }

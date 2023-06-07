@@ -31,5 +31,15 @@ public class KhachHangDAO {
 		}
 		return tkh;
 	}
+    public int InsertKhachHang(KhachHang kh) throws SQLException, ClassNotFoundException{
+	int res = 0;       
+                Connection conn = Connect.getConnection();
+                Statement st = conn.createStatement();
+                String query = "INSERT INTO TinNhan(`ho_ten`, `ngay_sinh`, `sdt`, `cccd`, `dia_chi`, `gmail`, `ngay_dang_ki`,`trang_thai`,`idPT`,`ten_tai_khoan`)VALUES('"+kh.getHo_ten()+"','"+kh.getNgay_sinh()+"','"+kh.getSdt()+"','"+kh.getCccd()+"','"+kh.getGmail()+"','"+kh.getNgay_dang_ki()+"',"+kh.getTrang_thai()+","+kh.getIdPT()+",'"+kh.getTen_tai_khoan()+"')"; 
+                res = st.executeUpdate(query);
+                Connect.closeConnection(conn);	  
+        return res;
+    }
+    
    
 }

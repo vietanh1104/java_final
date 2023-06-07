@@ -94,6 +94,7 @@ public class DSTinNhanAdminView extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Danh sách tin nhắn");
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
 
@@ -170,21 +171,21 @@ public class DSTinNhanAdminView extends javax.swing.JFrame {
         jMenuBar1.setMinimumSize(new java.awt.Dimension(800, 30));
         jMenuBar1.setPreferredSize(new java.awt.Dimension(800, 30));
 
-        jMenu1.setText("Menu");
+        jMenu1.setText("Home");
         jMenu1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu1.setMaximumSize(new java.awt.Dimension(160, 30));
         jMenu1.setPreferredSize(new java.awt.Dimension(160, 30));
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Thông tin cá nhân");
+        jMenu2.setText("Quản lý khách hàng");
         jMenu2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu2.setMaximumSize(new java.awt.Dimension(160, 30));
         jMenu2.setPreferredSize(new java.awt.Dimension(160, 30));
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Thông tin phòng");
+        jMenu3.setText("Quản lý phòng");
         jMenu3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu3.setMaximumSize(new java.awt.Dimension(160, 30));
@@ -192,7 +193,7 @@ public class DSTinNhanAdminView extends javax.swing.JFrame {
         jMenu3.setPreferredSize(new java.awt.Dimension(160, 30));
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Hóa đơn");
+        jMenu4.setText("Quản lý hóa đơn ");
         jMenu4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu4.setMaximumSize(new java.awt.Dimension(160, 30));
@@ -200,7 +201,7 @@ public class DSTinNhanAdminView extends javax.swing.JFrame {
         jMenu4.setPreferredSize(new java.awt.Dimension(160, 30));
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setText("jMenu5");
+        jMenu5.setText("Quản lý tin nhắn");
         jMenu5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jMenu5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jMenu5.setMaximumSize(new java.awt.Dimension(160, 30));

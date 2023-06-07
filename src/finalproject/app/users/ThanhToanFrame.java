@@ -6,6 +6,9 @@ package finalproject.app.users;
 
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -16,7 +19,7 @@ public class ThanhToanFrame extends JFrame{
 
     public ThanhToanFrame() {
         JFrame thanhToanFrame = new JFrame("Phòng trọ nhóm 5");
-        thanhToanFrame.setBounds(200, 100, 800, 600);
+        thanhToanFrame.setBounds(200, 100, 800, 650);
         JMenuBar menuBar = new JMenuBar();
         menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
         JMenu homeMenu = new JMenu("Home");
@@ -24,22 +27,22 @@ public class ThanhToanFrame extends JFrame{
         JMenu billMenu = new JMenu("Hóa đơn");
         JMenu roomMenu = new JMenu("Thông tin phòng");
         JMenu messageMenu = new JMenu("Tin nhắn");
-        billMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewListRoomMouseClicked(evt);
-            }
 
-            private void viewListRoomMouseClicked(MouseEvent evt) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-        });
         infoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewListCustomersMouseClicked(evt);
+                try {
+                    viewListCustomersMouseClicked(evt);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ThanhToanFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(ThanhToanFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
-            private void viewListCustomersMouseClicked(MouseEvent evt) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            private void viewListCustomersMouseClicked(MouseEvent evt) throws SQLException, ClassNotFoundException {
+                int id = 2;
+                thanhToanFrame.setVisible(false);
+                var a = new UpdateInfoFrame(id);
             }
         });
         roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -62,8 +65,8 @@ public class ThanhToanFrame extends JFrame{
         });
         menuBar.add(homeMenu);
         menuBar.add(infoMenu);
-        menuBar.add(billMenu);
         menuBar.add(roomMenu);
+        menuBar.add(billMenu);
         menuBar.add(messageMenu);
         
         thanhToanFrame.setJMenuBar(menuBar);

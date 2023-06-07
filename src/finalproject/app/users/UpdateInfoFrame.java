@@ -38,18 +38,11 @@ public class UpdateInfoFrame {
             }
 
             private void viewListRoomMouseClicked(MouseEvent evt) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                updateFrame.setVisible(false);
+                var a = new ThanhToanFrame();
             }
         });
-        infoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewListCustomersMouseClicked(evt);
-            }
-
-            private void viewListCustomersMouseClicked(MouseEvent evt) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-            }
-        });
+        
         roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewListBillMouseClicked(evt);
@@ -70,8 +63,8 @@ public class UpdateInfoFrame {
         });
         menuBar.add(homeMenu);
         menuBar.add(infoMenu);
-        menuBar.add(billMenu);
         menuBar.add(roomMenu);
+        menuBar.add(billMenu);
         menuBar.add(messageMenu);
         
         updateFrame.setJMenuBar(menuBar);
@@ -208,7 +201,7 @@ public class UpdateInfoFrame {
 
             }
         });
-        updateFrame.setBounds(200, 100, 800, 600);
+        updateFrame.setBounds(200, 100, 800, 650);
         updateFrame.setLayout(null);
         updateFrame.setResizable(false);
         updateFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

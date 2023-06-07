@@ -223,6 +223,9 @@
       </Layout>
       <SubComponents>
         <Component class="javax.swing.JTextField" name="tn">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="guitn">
           <Properties>

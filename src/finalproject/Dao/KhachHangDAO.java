@@ -31,4 +31,5 @@ public class KhachHangDAO {
 		}
 		return tkh;
 	}
+   
 }

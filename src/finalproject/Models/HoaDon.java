@@ -137,7 +137,7 @@ public class HoaDon {
     private Connection getConnection()throws SQLException, ClassNotFoundException{
         
         Connection connection = null;
-        if (true){
+        if (Configuration.dbtype=="mysql"){
             Class.forName("com.mysql.jdbc.Driver");
             return connection = DriverManager.getConnection(  
                     "jdbc:mysql://localhost/" + Configuration.dbname,Configuration.user,

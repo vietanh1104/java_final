@@ -92,6 +92,12 @@ public class TinNhanUserView extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(760, 460));
         jPanel1.setPreferredSize(new java.awt.Dimension(760, 460));
 
+        tn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tnActionPerformed(evt);
+            }
+        });
+
         guitn.setText("Gửi");
         guitn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         guitn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -244,6 +250,10 @@ public class TinNhanUserView extends javax.swing.JFrame {
             Logger.getLogger(TinNhanUserView.class.getName()).log(Level.SEVERE, null, ex);
         }     
     }//GEN-LAST:event_guitnMouseClicked
+
+    private void tnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tnActionPerformed
 
     /**
      * @param args the command line arguments

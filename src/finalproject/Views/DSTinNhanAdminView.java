@@ -123,7 +123,7 @@ public class DSTinNhanAdminView extends javax.swing.JFrame {
         dstn.setPreferredSize(new java.awt.Dimension(700, 400));
         jScrollPane1.setViewportView(dstn);
 
-        tim_ten.setText("Nhập tên khách hàng");
+        tim_ten.setText("Nhập mã khách hàng");
 
         jButton1.setText("Xem");
         jButton1.setPreferredSize(new java.awt.Dimension(24, 22));

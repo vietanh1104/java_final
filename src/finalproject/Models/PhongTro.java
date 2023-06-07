@@ -108,8 +108,8 @@ public class PhongTro {
 
     
 
-    public PhongTro() throws ClassNotFoundException{
-        Class.forName("com.mysql.jdbc.Driver");
+    public PhongTro(){
+        
     }
     
     public PhongTro(int so_phong, String co_so_vat_chat, String tinh_trang_su_dung, String kha_nang_su_dung, float gia_phong, float gia_dien, float gia_nuoc, float phu_thu) {
@@ -194,8 +194,10 @@ public class PhongTro {
             var res = new PhongTro( rs.getInt(2),rs.getString(3),
                 rs.getString(4),rs.getString(5),rs.getFloat(6), rs.getFloat(7),
                 rs.getFloat(8), rs.getFloat(9));
+            connection.close();
             return res;
         }
+        connection.close();
         return a;
     }
     
@@ -203,7 +205,7 @@ public class PhongTro {
     private Connection getConnection()throws SQLException, ClassNotFoundException{
         
         Connection connection = null;
-        if (true){
+        if (Configuration.dbtype=="mysql"){
             Class.forName("com.mysql.jdbc.Driver");
             return connection = DriverManager.getConnection(  
                     "jdbc:mysql://localhost/" + Configuration.dbname,Configuration.user,

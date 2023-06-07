@@ -11,8 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.*;
 import java.util.ArrayList;
-
 import java.util.Date;
+
 /**
  *
  * @author Dell
@@ -77,13 +77,19 @@ public class PhongTro {
         this.so_phong = so_phong;
     }
 
+
     public void setCo_so_vat_chat(String co_so_vat_chat) {
         this.co_so_vat_chat = co_so_vat_chat;
     }
 
+
+
     public void setTinh_trang_su_dung(String tinh_trang_su_dung) {
         this.tinh_trang_su_dung = tinh_trang_su_dung;
     }
+
+
+
 
     public void setKha_nang_su_dung(String kha_nang_su_dung) {
         this.kha_nang_su_dung = kha_nang_su_dung;
@@ -106,10 +112,9 @@ public class PhongTro {
     }
 
 
-    
 
-    public PhongTro(){
-        
+    
+   public PhongTro(){
     }
     
     public PhongTro(int so_phong, String co_so_vat_chat, String tinh_trang_su_dung, String kha_nang_su_dung, float gia_phong, float gia_dien, float gia_nuoc, float phu_thu) {
@@ -137,6 +142,7 @@ public class PhongTro {
             var res = new PhongTro( rs.getInt(2),rs.getString(3),
                 rs.getString(4),rs.getString(5),rs.getFloat(6), rs.getFloat(7),
                 rs.getFloat(8), rs.getFloat(9));
+            connection.close();
             return res;
         }
             
@@ -167,6 +173,7 @@ public class PhongTro {
                 rs.getFloat(8), rs.getFloat(9));
             a.add(res);
         }
+        connection.close();
         return a;
     }
     public void addingRoom(PhongTro pt) throws SQLException, ClassNotFoundException{

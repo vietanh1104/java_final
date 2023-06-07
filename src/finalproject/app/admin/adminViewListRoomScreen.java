@@ -55,7 +55,7 @@ class adminViewListRoomScreenMainComponent extends JComponent{
 public class adminViewListRoomScreen {
     private JFrame frame;
     public adminViewListRoomScreen() throws ClassNotFoundException, SQLException{
-        frame = new JFrame();
+        frame = new JFrame("Phần mềm quản lý phòng trọ");
         adminViewListRoomScreenMainComponent main_content =  new adminViewListRoomScreenMainComponent("Danh sách phòng");
         var a = new PhongTro();
         ArrayList<PhongTro> temp = a.getAll();
@@ -173,13 +173,18 @@ public class adminViewListRoomScreen {
         JMenuBar menuBar = new JMenuBar();
         menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
         JMenu homeMenu = new JMenu("Home");
-        JMenu infoMenu = new JMenu("Quản lý khách hàng");
+        JMenu cusMenu = new JMenu("Quản lý khách hàng");
         JMenu roomMenu = new JMenu("Quản lý phòng");
         JMenu billMenu = new JMenu("Quản lý hóa đơn");
         JMenu messageMenu = new JMenu("Quản lý tin nhắn");
         roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewListRoomMouseClicked(evt);
+            }
+        });
+        cusMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListCustomersMouseClicked(evt);
             }
         });
         billMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -193,7 +198,7 @@ public class adminViewListRoomScreen {
             }
         });
         menuBar.add(homeMenu);
-        menuBar.add(infoMenu);
+        menuBar.add(cusMenu);
         menuBar.add(roomMenu);
         menuBar.add(billMenu);
         menuBar.add(messageMenu);
@@ -228,6 +233,10 @@ public class adminViewListRoomScreen {
         frame.setVisible(false);
         var a = new DSTinNhanAdminView();
         a.setVisible(true);
+    }
+    private void viewListCustomersMouseClicked(java.awt.event.MouseEvent evt) {
+        frame.setVisible(false);
+        var a = new UsersManagementFrame();
     }
     
 }

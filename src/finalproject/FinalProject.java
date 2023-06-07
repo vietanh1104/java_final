@@ -10,6 +10,9 @@ import java.sql.SQLException;
 import finalproject.app.users.*;
 import finalproject.app.admin.*;
 import finalproject.Views.*;
+import finalproject.app.admin.UsersManagementFrame;
+import finalproject.app.users.*;
+import finalproject.app.admin.*;
 /**
  *
  * @author anhvi
@@ -21,8 +24,7 @@ public class FinalProject {
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         // TODO code application logic here
-        int idKH = 1;
-        var res = new adminViewListRoomScreen();
+        new DangNhapFrame();
         
     }
 }

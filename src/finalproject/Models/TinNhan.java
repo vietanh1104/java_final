@@ -6,6 +6,7 @@ package finalproject.Models;
 import java.sql.Time;
 import java.sql.Date;
 
+
 /**
  *
  * @author Dell
@@ -34,6 +35,7 @@ public class TinNhan {
         this.gio = gio;
     }
 
+    private Date thoi_gian;  
 
     public int getId() {
         return id;
@@ -49,6 +51,14 @@ public class TinNhan {
 
     public void setNoi_dung(String noi_dung) {
         this.noi_dung = noi_dung;
+    }
+
+    public Date getThoi_gian() {
+        return thoi_gian;
+    }
+
+    public void setThoi_gian(Date thoi_gian) {
+        this.thoi_gian = thoi_gian;
     }
 
     public int getTrang_thai() {

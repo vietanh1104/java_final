@@ -1,4 +1,3 @@
-
 package finalproject.Models;
 
 import Shared.Configuration;
@@ -8,25 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.*;
 import java.util.ArrayList;
-
 import java.util.Date;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
-import java.util.Date;
-
-/**
- *
- * @author Dell
-=======
-
-/**
- *
- * @author anhvi
- */
 public class KhachHang {
+
     private int id;
     private String ho_ten;
     private Date ngay_sinh;
@@ -126,17 +114,18 @@ public class KhachHang {
     public void setTen_tai_khoan(String ten_tai_khoan) {
         this.ten_tai_khoan = ten_tai_khoan;
     }
-    
+
     public KhachHang() {
     }
-    public String getFullnameByRoomId(int roomId) throws ClassNotFoundException, SQLException{
+
+    public String getFullnameByRoomId(int roomId) throws ClassNotFoundException, SQLException {
         var connection = getConnection();
         var stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery("select kh.ho_ten from khachhang kh"
                 + " inner join phongtro pt on pt.id =  kh.idPT"
                 + " where pt.id = "+ roomId );
-            // show data
-        while(rs.first()){
+        // show data
+        while (rs.first()) {
             String res = rs.getString(1);
             connection.close();
             return res;
@@ -144,16 +133,73 @@ public class KhachHang {
         connection.close();
         return "";
     }
-    private Connection getConnection()throws SQLException, ClassNotFoundException{
-        
+
+    private Connection getConnection() throws SQLException, ClassNotFoundException {
+
         Connection connection = null;
+
         if (Configuration.dbtype=="mysql"){
             Class.forName("com.mysql.jdbc.Driver");
-            return connection = DriverManager.getConnection(  
-                    "jdbc:mysql://localhost/" + Configuration.dbname,Configuration.user,
+            return connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost/" + Configuration.dbname, Configuration.user,
                     Configuration.password);
         }
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         return DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QLPT;user=nhom5;password=12345678;encrypt=false");
+    }
+
+    public int SelectIdByTentaikhoan(String s) throws SQLException, ClassNotFoundException {
+        int id = 0;
+        Connection conn = getConnection();
+        try {
+            var st = conn.createStatement();
+            String sql = "SELECT id FROM KhachHang WHERE `ten_tai_khoan` = '" + s+"'";
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                id = rs.getInt("id");
+            }
+            conn.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    public KhachHang SelectKHById(int id) throws SQLException, ClassNotFoundException {
+        KhachHang kh = new KhachHang();
+        Connection conn = getConnection();
+        try {
+            var st = conn.createStatement();
+            String sql = "SELECT * FROM KhachHang WHERE id = " + id;
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                kh.setHo_ten(rs.getString("ho_ten"));
+                kh.setNgay_sinh(rs.getDate("ngay_sinh"));
+                kh.setSdt(rs.getString("sdt"));
+                kh.setCccd(rs.getString("cccd"));
+                kh.setDia_chi(rs.getString("dia_chi"));
+                kh.setGmail(rs.getString("gmail"));
+                kh.setNgay_dang_ki(rs.getDate("ngay_dang_ki"));
+                kh.setTrang_thai(rs.getInt("trang_thai"));
+                kh.setIdPT(rs.getInt("idPT"));
+                kh.setTen_tai_khoan(rs.getString("ten_tai_khoan"));
+            }
+            conn.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return kh;
+    }
+
+    public int UpdateKhachHang(KhachHang k) throws SQLException, ClassNotFoundException {
+        int kt = 0;
+        Connection conn = getConnection();
+        var st = conn.createStatement();
+        String sql = "UPDATE KhachHang SET ho_ten='" + k.getHo_ten() + "',ngay_sinh='" + k.getNgay_sinh() + "',sdt='" + k.getSdt() + "',cccd='" + k.getCccd() + "',dia_chi='" + k.getDia_chi() + "',gmail='" + k.getGmail() + "',ten_tai_khoan='" + k.getTen_tai_khoan() + "' WHERE idKH = " + k.getId();
+        kt = st.executeUpdate(sql);
+        conn.close();
+        return kt;
     }
 }

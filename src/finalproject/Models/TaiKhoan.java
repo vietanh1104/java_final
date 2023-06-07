@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class TaiKhoan {
     private String ten_tai_khoan;
     private String mat_khau;
-    private String vai_tro;
+    private int vai_tro;
 
     public String getTen_tai_khoan() {
         return ten_tai_khoan;
@@ -24,7 +24,7 @@ public class TaiKhoan {
         return mat_khau;
     }
 
-    public String getVai_tro() {
+    public int getVai_tro() {
         return vai_tro;
     }
 
@@ -36,30 +36,35 @@ public class TaiKhoan {
         this.mat_khau = mat_khau;
     }
 
-    public void setVai_tro(String vai_tro) {
+    public void setVai_tro(int vai_tro) {
         this.vai_tro = vai_tro;
     }
 
     public TaiKhoan() {
     }
 
-    public TaiKhoan(String ten_tai_khoan, String mat_khau, String vai_tro) {
+    public TaiKhoan(String ten_tai_khoan, String mat_khau, int vai_tro) {
         this.ten_tai_khoan = ten_tai_khoan;
         this.mat_khau = mat_khau;
         this.vai_tro = vai_tro;
     }
     
     public ArrayList<TaiKhoan> getAll() throws SQLException, ClassNotFoundException{
+        ArrayList<TaiKhoan> tks = new ArrayList<TaiKhoan>();
         var connection = getConnection();
         var stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery("select * from TaiKhoan");
             // show data
             while (rs.next()) {
-                System.out.println(rs.getInt(1) + "  " + rs.getString(2) + "  " + rs.getString(3));
+                TaiKhoan tk = new TaiKhoan();
+                tk.setTen_tai_khoan(rs.getString("ten_tai_khoan"));
+                tk.setMat_khau(rs.getString("mat_khau"));
+                tk.setVai_tro(rs.getInt("vai_tro"));
+                tks.add(tk);
             }
             // close connection
             connection.close();
-        return new ArrayList<TaiKhoan>();
+        return tks;
     }  
     
     private Connection getConnection()throws SQLException, ClassNotFoundException{

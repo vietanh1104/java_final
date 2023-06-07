@@ -191,7 +191,7 @@ public class adminRoomEdittingScreen {
         JMenuBar menuBar = new JMenuBar();
         menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
         JMenu homeMenu = new JMenu("Home");
-        JMenu infoMenu = new JMenu("Quản lý khách hàng");
+        JMenu cusMenu = new JMenu("Quản lý khách hàng");
         JMenu roomMenu = new JMenu("Quản lý phòng");
         JMenu billMenu = new JMenu("Quản lý hóa đơn");
         JMenu messageMenu = new JMenu("Quản lý tin nhắn");
@@ -211,7 +211,7 @@ public class adminRoomEdittingScreen {
             }
         });
         menuBar.add(homeMenu);
-        menuBar.add(infoMenu);
+        menuBar.add(cusMenu);
         menuBar.add(roomMenu);
         menuBar.add(billMenu);
         menuBar.add(messageMenu);
@@ -247,5 +247,9 @@ public class adminRoomEdittingScreen {
         frame.setVisible(false);
         var a = new DSTinNhanAdminView();
         a.setVisible(true);
+    }
+    private void viewListCustomersMouseClicked(java.awt.event.MouseEvent evt) {
+        frame.setVisible(false);
+        var a = new UsersManagementFrame();
     }
 }

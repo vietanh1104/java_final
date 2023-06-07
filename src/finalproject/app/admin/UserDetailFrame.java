@@ -4,8 +4,10 @@
  */
 package finalproject.app.admin;
 
+import finalproject.Views.DSTinNhanAdminView;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import javax.swing.*;
 
 /**
@@ -14,37 +16,39 @@ import javax.swing.*;
  */
 public class UserDetailFrame {
     
-    
+    private JFrame userDetailFrame;
     public UserDetailFrame(){
-        JFrame userDetailFrame = new JFrame("Quản lý phòng trọ");
+        userDetailFrame = new JFrame("Quản lý phòng trọ");
         
         JMenuBar menuBar = new JMenuBar();
         menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
         JMenu homeMenu = new JMenu("Home");
-        JMenu infoMenu = new JMenu("Quản lý khách hàng");
+        JMenu cusMenu = new JMenu("Quản lý khách hàng");
         JMenu roomMenu = new JMenu("Quản lý phòng");
         JMenu billMenu = new JMenu("Quản lý hóa đơn");
         JMenu messageMenu = new JMenu("Quản lý tin nhắn");
+        cusMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListCustomersMouseClicked(evt);
+            }
+        });
         roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewListRoomMouseClicked(evt);
-            }
-
-            private void viewListRoomMouseClicked(MouseEvent evt) {
-                
             }
         });
         billMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewListBillMouseClicked(evt);
             }
-
-            private void viewListBillMouseClicked(MouseEvent evt) {
-                
+        });
+        messageMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListMessageMouseClicked(evt);
             }
         });
         menuBar.add(homeMenu);
-        menuBar.add(infoMenu);
+        menuBar.add(cusMenu);
         menuBar.add(roomMenu);
         menuBar.add(billMenu);
         menuBar.add(messageMenu);
@@ -149,6 +153,33 @@ public class UserDetailFrame {
         userDetailFrame.setResizable(false);
         userDetailFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         userDetailFrame.setVisible(true);
+    }
+    private void viewListRoomMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            userDetailFrame.setVisible(false);
+            var a = new adminViewListRoomScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
+    private void viewListBillMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            userDetailFrame.setVisible(false);
+            var a = new adminBillViewListScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
+    private void viewListMessageMouseClicked(java.awt.event.MouseEvent evt) {
+        userDetailFrame.setVisible(false);
+        var a = new DSTinNhanAdminView();
+        a.setVisible(true);
+    }
+    private void viewListCustomersMouseClicked(java.awt.event.MouseEvent evt) {
+        userDetailFrame.setVisible(false);
+        var a = new UsersManagementFrame();
     }
    
 }

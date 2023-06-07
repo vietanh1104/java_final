@@ -4,8 +4,10 @@
  */
 package finalproject.app.admin;
 
+import finalproject.Views.DSTinNhanAdminView;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,12 +17,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class UsersManagementFrame extends JFrame{
     public UsersManagementFrame(){
-        JFrame usersManagementFrame = new JFrame("Quản lý khách hàng");
-        usersManagementFrame.setBounds(200,100,800,650);
+        setBounds(200,100,800,650);
         
         JMenuBar menuBar = new JMenuBar();
         menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
         JMenu homeMenu = new JMenu("Home");
+        JMenu cusMenu = new JMenu("Quản lý khách hàng");
         JMenu infoMenu = new JMenu("Quản lý khách hàng");
         JMenu roomMenu = new JMenu("Quản lý phòng");
         JMenu billMenu = new JMenu("Quản lý hóa đơn");
@@ -29,18 +31,20 @@ public class UsersManagementFrame extends JFrame{
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewListRoomMouseClicked(evt);
             }
-
-            private void viewListRoomMouseClicked(MouseEvent evt) {
-                
+        });
+        cusMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListCustomersMouseClicked(evt);
             }
         });
         billMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewListBillMouseClicked(evt);
             }
-
-            private void viewListBillMouseClicked(MouseEvent evt) {
-                
+        });
+        messageMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListMessageMouseClicked(evt);
             }
         });
         menuBar.add(homeMenu);
@@ -50,7 +54,7 @@ public class UsersManagementFrame extends JFrame{
         menuBar.add(messageMenu);
 
         
-        usersManagementFrame.setJMenuBar(menuBar);
+        setJMenuBar(menuBar);
         
         Font font = new Font("Inter", Font.BOLD, 28);
         
@@ -58,13 +62,13 @@ public class UsersManagementFrame extends JFrame{
         lb.setBounds(250, 15, 300, 50);
         lb.setHorizontalAlignment(SwingConstants.CENTER);
         lb.setFont(font);
-        usersManagementFrame.add(lb);
+        add(lb);
         
         JPanel pn = new JPanel();
         pn.setBounds(20, 80, 750, 470);
         pn.setLayout(null);
         pn.setBackground(new Color(0, 202, 177));
-        usersManagementFrame.add(pn);
+        add(pn);
         
         font = new Font("Inter", Font.BOLD, 18);
         JLabel lb1 = new JLabel("Danh sách khách hàng");
@@ -102,9 +106,36 @@ public class UsersManagementFrame extends JFrame{
         bt2.setBackground(Color.RED);
         pn.add(bt2);
         
-        usersManagementFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        usersManagementFrame.setLayout(null);
-        usersManagementFrame.setVisible(true);
-        usersManagementFrame.setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(null);
+        setVisible(true);
+        setResizable(false);
+    }
+    private void viewListRoomMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            this.setVisible(false);
+            var a = new adminViewListRoomScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
+    private void viewListBillMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            this.setVisible(false);
+            var a = new adminBillViewListScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
+    private void viewListMessageMouseClicked(java.awt.event.MouseEvent evt) {
+        this.setVisible(false);
+        var a = new DSTinNhanAdminView();
+        a.setVisible(true);
+    }
+    private void viewListCustomersMouseClicked(java.awt.event.MouseEvent evt) {
+        this.setVisible(false);
+        var a = new UsersManagementFrame();
     }
 }

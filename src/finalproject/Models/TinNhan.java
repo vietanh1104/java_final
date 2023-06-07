@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package finalproject.Models;
+import java.sql.Time;
+import java.sql.Date;
 
-import java.util.Date;
 
 /**
  *
@@ -13,9 +14,28 @@ import java.util.Date;
 public class TinNhan {
     private int id;
     private String noi_dung;
-    private Date thoi_gian;  
+    private Date ngay; 
+    private Time gio;
     private int trang_thai;
     private int idKH;
+
+    public String getNgay() {
+        return ngay.toString();
+    }
+
+    public void setNgay(Date ngay) {
+        this.ngay = ngay;
+    }
+
+    public String getGio() {
+        return gio.toString();
+    }
+
+    public void setGio(Time gio) {
+        this.gio = gio;
+    }
+
+    private Date thoi_gian;  
 
     public int getId() {
         return id;

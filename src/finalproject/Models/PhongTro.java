@@ -4,28 +4,19 @@
  */
 package finalproject.Models;
 
-<<<<<<< HEAD
-/**
- *
- * @author Dell
- */
-public class PhongTro {
-    private int id;
-    private String so_phong;
-    private String co_so_vat_chat;
-    private String tinh_trang_su_dung;
-    private String kha_nang_su_dung;
-    private int gia_phong;
-    private int gia_dien;
-    private int gia_nuoc;
-    private int phu_thu;
-=======
 import Shared.Configuration;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.*;
 import java.util.ArrayList;
+
+import java.util.Date;
+/**
+ *
+ * @author Dell
+ */
 
 /**
  *
@@ -41,59 +32,27 @@ public class PhongTro {
     private float gia_dien;
     private float gia_nuoc;
     private float phu_thu;
->>>>>>> vanh
 
     public int getId() {
         return id;
     }
 
-<<<<<<< HEAD
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getSo_phong() {
-        return so_phong;
-    }
-
-    public void setSo_phong(String so_phong) {
-        this.so_phong = so_phong;
-    }
-
-=======
     public int getSo_phong() {
         return so_phong;
     }
 
->>>>>>> vanh
     public String getCo_so_vat_chat() {
         return co_so_vat_chat;
     }
 
-<<<<<<< HEAD
-    public void setCo_so_vat_chat(String co_so_vat_chat) {
-        this.co_so_vat_chat = co_so_vat_chat;
-    }
-
-=======
->>>>>>> vanh
     public String getTinh_trang_su_dung() {
         return tinh_trang_su_dung;
     }
 
-<<<<<<< HEAD
-    public void setTinh_trang_su_dung(String tinh_trang_su_dung) {
-        this.tinh_trang_su_dung = tinh_trang_su_dung;
-    }
-
-=======
->>>>>>> vanh
     public String getKha_nang_su_dung() {
         return kha_nang_su_dung;
     }
 
-<<<<<<< HEAD
-=======
     public float getGia_phong() {
         return gia_phong;
     }
@@ -110,6 +69,10 @@ public class PhongTro {
         return phu_thu;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setSo_phong(int so_phong) {
         this.so_phong = so_phong;
     }
@@ -122,44 +85,10 @@ public class PhongTro {
         this.tinh_trang_su_dung = tinh_trang_su_dung;
     }
 
->>>>>>> vanh
     public void setKha_nang_su_dung(String kha_nang_su_dung) {
         this.kha_nang_su_dung = kha_nang_su_dung;
     }
 
-<<<<<<< HEAD
-    public int getGia_phong() {
-        return gia_phong;
-    }
-
-    public void setGia_phong(int gia_phong) {
-        this.gia_phong = gia_phong;
-    }
-
-    public int getGia_dien() {
-        return gia_dien;
-    }
-
-    public void setGia_dien(int gia_dien) {
-        this.gia_dien = gia_dien;
-    }
-
-    public int getGia_nuoc() {
-        return gia_nuoc;
-    }
-
-    public void setGia_nuoc(int gia_nuoc) {
-        this.gia_nuoc = gia_nuoc;
-    }
-
-    public int getPhu_thu() {
-        return phu_thu;
-    }
-
-    public void setPhu_thu(int phu_thu) {
-        this.phu_thu = phu_thu;
-    }
-=======
     public void setGia_phong(float gia_phong) {
         this.gia_phong = gia_phong;
     }
@@ -175,6 +104,9 @@ public class PhongTro {
     public void setPhu_thu(float phu_thu) {
         this.phu_thu = phu_thu;
     }
+
+
+    
 
     public PhongTro() throws ClassNotFoundException{
         Class.forName("com.mysql.jdbc.Driver");
@@ -286,5 +218,4 @@ public class PhongTro {
         return "PhongTro{" + "id=" + id + ", so_phong=" + so_phong + ", co_so_vat_chat=" + co_so_vat_chat + ", tinh_trang_su_dung=" + tinh_trang_su_dung + ", kha_nang_su_dung=" + kha_nang_su_dung + ", gia_phong=" + gia_phong + ", gia_dien=" + gia_dien + ", gia_nuoc=" + gia_nuoc + ", phu_thu=" + phu_thu + '}';
     }
     
->>>>>>> vanh
 }

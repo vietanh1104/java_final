@@ -4,6 +4,7 @@
  */
 package finalproject.app.admin;
 import finalproject.Models.PhongTro;
+import finalproject.Views.DSTinNhanAdminView;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -118,11 +119,11 @@ class adminRoomEditingMainContent extends JComponent{
 }
 
 public class adminRoomEdittingScreen {
-
+    private JFrame frame;
     public adminRoomEdittingScreen(int roomId) throws ClassNotFoundException, SQLException{
         var a = new PhongTro();
         PhongTro roomDetail = a.getRoomById(roomId);
-        var frame = new JFrame("Phần mềm quản lý phòng trọ");
+        frame = new JFrame("Phần mềm quản lý phòng trọ");
         String windowContent = "Sửa thông tin phòng";
         adminRoomEditingMainContent main_component = new adminRoomEditingMainContent(windowContent, "room201.jpg") ;
         
@@ -187,6 +188,36 @@ public class adminRoomEdittingScreen {
             } 
         } );
         frame.add(button);
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
+        JMenu homeMenu = new JMenu("Home");
+        JMenu infoMenu = new JMenu("Quản lý khách hàng");
+        JMenu roomMenu = new JMenu("Quản lý phòng");
+        JMenu billMenu = new JMenu("Quản lý hóa đơn");
+        JMenu messageMenu = new JMenu("Quản lý tin nhắn");
+        roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListRoomMouseClicked(evt);
+            }
+        });
+        billMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListBillMouseClicked(evt);
+            }
+        });
+        messageMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListMessageMouseClicked(evt);
+            }
+        });
+        menuBar.add(homeMenu);
+        menuBar.add(infoMenu);
+        menuBar.add(roomMenu);
+        menuBar.add(billMenu);
+        menuBar.add(messageMenu);
+
+        frame.setJMenuBar(menuBar);
+        
         frame.add(main_component);
               
         
@@ -194,4 +225,27 @@ public class adminRoomEdittingScreen {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true); // make window visible
     }  
+    private void viewListRoomMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            frame.setVisible(false);
+            var a = new adminViewListRoomScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
+    private void viewListBillMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            frame.setVisible(false);
+            var a = new adminBillViewListScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
+    private void viewListMessageMouseClicked(java.awt.event.MouseEvent evt) {
+        frame.setVisible(false);
+        var a = new DSTinNhanAdminView();
+        a.setVisible(true);
+    }
 }

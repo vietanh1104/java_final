@@ -10,7 +10,7 @@ import javax.swing.border.*;
 import java.awt.image.BufferedImage;
 import java.awt.event.*;
 import finalproject.Models.*;
-import finalproject.app.users.userRoomDetailScreen;
+import finalproject.Views.*;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -234,6 +234,11 @@ public class adminBillViewDetailScreen {
                 viewListBillMouseClicked(evt);
             }
         });
+        messageMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListMessageMouseClicked(evt);
+            }
+        });
 
         menuBar.add(homeMenu);
         menuBar.add(infoMenu);
@@ -267,5 +272,10 @@ public class adminBillViewDetailScreen {
         catch(ClassNotFoundException | SQLException ex){
             ex.printStackTrace();     
         }
+    }
+    private void viewListMessageMouseClicked(java.awt.event.MouseEvent evt) {
+        frame.setVisible(false);
+        var a = new DSTinNhanAdminView();
+        a.setVisible(true);
     }
 }

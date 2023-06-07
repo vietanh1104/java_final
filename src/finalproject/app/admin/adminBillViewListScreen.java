@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import finalproject.Models.*;
+import finalproject.Views.DSTinNhanAdminView;
 import java.sql.SQLException;
 import javax.swing.BoxLayout;
 import javax.swing.JMenu;
@@ -240,7 +241,11 @@ public class adminBillViewListScreen {
                 viewListBillMouseClicked(evt);
             }
         });
-
+        messageMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListMessageMouseClicked(evt);
+            }
+        });
         menuBar.add(homeMenu);
         menuBar.add(infoMenu);
         menuBar.add(roomMenu);
@@ -271,5 +276,10 @@ public class adminBillViewListScreen {
         catch(ClassNotFoundException | SQLException ex){
             ex.printStackTrace();     
         }
+    }
+    private void viewListMessageMouseClicked(java.awt.event.MouseEvent evt) {
+        frame.setVisible(false);
+        var a = new DSTinNhanAdminView();
+        a.setVisible(true);
     }
 }

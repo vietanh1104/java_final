@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 package finalproject.Models;
 
 import Shared.Configuration;
@@ -7,15 +6,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.*;
 import java.util.ArrayList;
 
->>>>>>> vanh
+import java.util.Date;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-<<<<<<< HEAD
-package finalproject.Models;
 
 import java.util.Date;
 
@@ -27,12 +25,10 @@ import java.util.Date;
 /**
  *
  * @author anhvi
->>>>>>> vanh
  */
 public class KhachHang {
     private int id;
     private String ho_ten;
-<<<<<<< HEAD
     private Date ngay_sinh;
     private String sdt;
     private String cccd;
@@ -131,8 +127,6 @@ public class KhachHang {
         this.ten_tai_khoan = ten_tai_khoan;
     }
     
-=======
-
     public KhachHang() {
     }
     public String getFullnameByRoomId(int roomId) throws ClassNotFoundException, SQLException{
@@ -159,5 +153,4 @@ public class KhachHang {
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         return DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databasename=QLPT;user=nhom5;password=12345678;encrypt=false");
     }
->>>>>>> vanh
 }

@@ -6,6 +6,7 @@ package finalproject.app.admin;
 
 import javax.swing.JTextArea;
 import finalproject.Models.*;
+import finalproject.Views.DSTinNhanAdminView;
 import java.sql.*;
 import javax.swing.table.*;
 import java.awt.*;
@@ -186,6 +187,11 @@ public class adminViewListRoomScreen {
                 viewListBillMouseClicked(evt);
             }
         });
+        messageMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListMessageMouseClicked(evt);
+            }
+        });
         menuBar.add(homeMenu);
         menuBar.add(infoMenu);
         menuBar.add(roomMenu);
@@ -217,6 +223,11 @@ public class adminViewListRoomScreen {
         catch(ClassNotFoundException | SQLException ex){
             ex.printStackTrace();     
         }
+    }
+    private void viewListMessageMouseClicked(java.awt.event.MouseEvent evt) {
+        frame.setVisible(false);
+        var a = new DSTinNhanAdminView();
+        a.setVisible(true);
     }
     
 }

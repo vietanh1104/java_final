@@ -10,6 +10,7 @@ import javax.swing.border.*;
 import java.awt.image.BufferedImage;
 import java.awt.event.*;
 import finalproject.Models.*;
+import finalproject.Views.DSTinNhanAdminView;
 /**
  *
  * @author anhvi
@@ -295,6 +296,19 @@ public class adminRoomAddingScreen {
                 viewListBillMouseClicked(evt);
             }
         });
+        messageMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListMessageMouseClicked(evt);
+            }
+        });
+        
+        menuBar.add(homeMenu);
+        menuBar.add(infoMenu);
+        menuBar.add(roomMenu);
+        menuBar.add(billMenu);
+        menuBar.add(messageMenu);
+
+        frame.setJMenuBar(menuBar);
         frame.add(button);
         frame.add(main_component);
               
@@ -320,5 +334,10 @@ public class adminRoomAddingScreen {
         catch(ClassNotFoundException | SQLException ex){
             ex.printStackTrace();     
         }
+    }
+    private void viewListMessageMouseClicked(java.awt.event.MouseEvent evt) {
+        frame.setVisible(false);
+        var a = new DSTinNhanAdminView();
+        a.setVisible(true);
     }
 }

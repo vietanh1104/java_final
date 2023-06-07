@@ -10,6 +10,7 @@ import javax.swing.border.*;
 import java.awt.image.BufferedImage;
 import java.awt.event.*;
 import finalproject.Models.*;
+import finalproject.app.users.userRoomDetailScreen;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -128,8 +129,9 @@ class adminBillViewDetailMainContent extends JComponent{
 }
 
 public class adminBillViewDetailScreen {
+    private JFrame frame;
     public adminBillViewDetailScreen(){
-        var frame = new JFrame("Phần mềm quản lý phòng trọ");
+        frame = new JFrame("Phần mềm quản lý phòng trọ");
         String windowContent = "Thêm mới hóa đơn";
         adminBillViewDetailMainContent main_component = new adminBillViewDetailMainContent(windowContent,"room201.jpg") ;
         
@@ -215,6 +217,31 @@ public class adminBillViewDetailScreen {
                 frame.setVisible(false);
             } 
         } );
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
+        JMenu homeMenu = new JMenu("Home");
+        JMenu infoMenu = new JMenu("Quản lý khách hàng");
+        JMenu roomMenu = new JMenu("Quản lý phòng");
+        JMenu billMenu = new JMenu("Quản lý hóa đơn");
+        JMenu messageMenu = new JMenu("Quản lý tin nhắn");
+        roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListRoomMouseClicked(evt);
+            }
+        });
+        billMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListBillMouseClicked(evt);
+            }
+        });
+
+        menuBar.add(homeMenu);
+        menuBar.add(infoMenu);
+        menuBar.add(roomMenu);
+        menuBar.add(billMenu);
+        menuBar.add(messageMenu);
+
+        frame.setJMenuBar(menuBar);
         frame.add(button);
         frame.add(main_component);
               
@@ -223,4 +250,22 @@ public class adminBillViewDetailScreen {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true); // make window visible
     }  
+    private void viewListRoomMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            frame.setVisible(false);
+            var a = new adminViewListRoomScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
+    private void viewListBillMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            frame.setVisible(false);
+            var a = new adminBillViewListScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
 }

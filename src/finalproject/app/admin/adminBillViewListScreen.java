@@ -19,6 +19,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import finalproject.Models.*;
 import java.sql.SQLException;
+import javax.swing.BoxLayout;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -63,8 +66,9 @@ class adminBillViewAllListMainContent extends JComponent{
     } 
 }
 public class adminBillViewListScreen {
+    private JFrame frame;
     public adminBillViewListScreen() throws ClassNotFoundException, SQLException{
-        var frame = new JFrame();
+        frame = new JFrame("Phần mềm quản lý phòng trọ");
         adminBillViewAllListMainContent main_content =  new adminBillViewAllListMainContent("Danh sách hóa đơn");
         var a = new HoaDon();
         var kh = new KhachHang();
@@ -219,9 +223,53 @@ public class adminBillViewListScreen {
         button3.setBounds(620,480, 100, 45);
         frame.add(button3);
         
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
+        JMenu homeMenu = new JMenu("Home");
+        JMenu infoMenu = new JMenu("Quản lý khách hàng");
+        JMenu roomMenu = new JMenu("Quản lý phòng");
+        JMenu billMenu = new JMenu("Quản lý hóa đơn");
+        JMenu messageMenu = new JMenu("Quản lý tin nhắn");
+        roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListRoomMouseClicked(evt);
+            }
+        });
+        billMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListBillMouseClicked(evt);
+            }
+        });
+
+        menuBar.add(homeMenu);
+        menuBar.add(infoMenu);
+        menuBar.add(roomMenu);
+        menuBar.add(billMenu);
+        menuBar.add(messageMenu);
+
+        frame.setJMenuBar(menuBar);
+        
         frame.add(main_content);
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true); // make window visible
     }   
+    private void viewListRoomMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            frame.setVisible(false);
+            var a = new adminViewListRoomScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
+    private void viewListBillMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            frame.setVisible(false);
+            var a = new adminBillViewListScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
 }

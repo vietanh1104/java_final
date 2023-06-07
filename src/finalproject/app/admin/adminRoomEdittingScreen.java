@@ -119,9 +119,9 @@ class adminRoomEditingMainContent extends JComponent{
 
 public class adminRoomEdittingScreen {
 
-    public adminRoomEdittingScreen(int idKH) throws ClassNotFoundException, SQLException{
+    public adminRoomEdittingScreen(int roomId) throws ClassNotFoundException, SQLException{
         var a = new PhongTro();
-        PhongTro roomDetail = a.getDetailRoom(idKH);
+        PhongTro roomDetail = a.getRoomById(roomId);
         var frame = new JFrame("Phần mềm quản lý phòng trọ");
         String windowContent = "Sửa thông tin phòng";
         adminRoomEditingMainContent main_component = new adminRoomEditingMainContent(windowContent, "room201.jpg") ;

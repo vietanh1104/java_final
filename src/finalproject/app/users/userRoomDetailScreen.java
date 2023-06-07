@@ -104,7 +104,7 @@ class userRoomDetailMainContent extends JComponent{
         graphics2.drawString(this.text, 80, 320);
         
         // roomId
-        JTextField roomIdTextField = new JTextField(this.roomId);
+        JTextField roomIdTextField = new JTextField(String.valueOf(this.roomId));
         roomIdTextField.setHorizontalAlignment(SwingConstants.LEFT);
         roomIdTextField.setEditable(false);
         roomIdTextField.setForeground(Color.BLACK); // Set the font color
@@ -178,8 +178,11 @@ class userRoomDetailMainContent extends JComponent{
     }
 }
 public class userRoomDetailScreen {
+    private int idKH;
+    private JFrame frame;
     public userRoomDetailScreen(int idKH) throws SQLException, ClassNotFoundException{
-        var frame = new JFrame("Phần mềm quản lý phòng trọ");
+        this.idKH = idKH;
+        frame = new JFrame("Phần mềm quản lý phòng trọ");
         String windowContent = "Thông tin phòng";
         var a = new PhongTro();
         PhongTro roomDetail = a.getDetailRoom(idKH);
@@ -195,28 +198,23 @@ public class userRoomDetailScreen {
         JMenuBar menuBar = new JMenuBar();
         menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
 
-        JMenu fileMenu = new JMenu("File");
-
-        JMenuItem newMenuItem = new JMenuItem("New");
-        JMenuItem openMenuItem = new JMenuItem("Open");
-        JMenuItem saveMenuItem = new JMenuItem("Save");
-        JMenuItem exitMenuItem = new JMenuItem("Exit");
-
-        exitMenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
-                
+        JMenu homeMenu = new JMenu("Home");
+        JMenu infoMenu = new JMenu("Thông tin cá nhân");
+        JMenu roomMenu = new JMenu("Thông tin phòng");
+        JMenu billMenu = new JMenu("Hóa đơn");
+        JMenu messageMenu = new JMenu("Tin nhắn");
+        roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu5MouseClicked(evt);
             }
         });
-            
-        fileMenu.add(newMenuItem);
-        fileMenu.add(openMenuItem);
-        fileMenu.add(saveMenuItem);
-        fileMenu.addSeparator();
-        fileMenu.add(exitMenuItem);
 
-        menuBar.add(fileMenu);
 
+        menuBar.add(homeMenu);
+        menuBar.add(infoMenu);
+        menuBar.add(roomMenu);
+        menuBar.add(billMenu);
+        menuBar.add(messageMenu);
 
         frame.setJMenuBar(menuBar);
         
@@ -224,5 +222,13 @@ public class userRoomDetailScreen {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true); // make window visible
     }
-
+    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            frame.setVisible(false);
+            var a = new userRoomDetailScreen(this.idKH);
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
 }

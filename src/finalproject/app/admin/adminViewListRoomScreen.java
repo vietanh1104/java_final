@@ -52,8 +52,9 @@ class adminViewListRoomScreenMainComponent extends JComponent{
     } 
 }
 public class adminViewListRoomScreen {
+    private JFrame frame;
     public adminViewListRoomScreen() throws ClassNotFoundException, SQLException{
-        var frame = new JFrame();
+        frame = new JFrame();
         adminViewListRoomScreenMainComponent main_content =  new adminViewListRoomScreenMainComponent("Danh sách phòng");
         var a = new PhongTro();
         ArrayList<PhongTro> temp = a.getAll();
@@ -95,17 +96,6 @@ public class adminViewListRoomScreen {
         trangThaiTextField.setEditable(false);
         trangThaiTextField.setBorder(compoundBorder);
         frame.add(trangThaiTextField);
-        // 
-        JTextField extendTextField = new JTextField();
-        extendTextField.setHorizontalAlignment(SwingConstants.CENTER);
-        extendTextField.setForeground(Color.BLACK); // Set the font color
-        extendTextField.setBackground(Color.WHITE); // Set the background color
-
-        extendTextField.setBounds(570,105, 150, 30);
-        // Create a rounded border
-        extendTextField.setEditable(false);
-        extendTextField.setBorder(compoundBorder);
-        frame.add(extendTextField);
         for(PhongTro pt : temp){
             int skip = i * 30;
             // stt
@@ -142,16 +132,21 @@ public class adminViewListRoomScreen {
             trangThaiTextField.setBorder(compoundBorder);
             frame.add(trangThaiTextField);
             // 
-            extendTextField = new JTextField();
-            extendTextField.setHorizontalAlignment(SwingConstants.CENTER);
-            extendTextField.setForeground(Color.BLACK); // Set the font color
-            extendTextField.setBackground(Color.WHITE); // Set the background color
-
-            extendTextField.setBounds(570,105+skip, 150, 30);
+            JButton button = new JButton("Xem");
+            button.setBounds(580,105+skip, 100,25);
             // Create a rounded border
-            extendTextField.setEditable(false);
-            extendTextField.setBorder(compoundBorder);
-            frame.add(extendTextField);
+            button.setBorder(compoundBorder);
+            button.addActionListener(new ActionListener() { 
+            public void actionPerformed(ActionEvent e)  { 
+                try{
+                    var a = new adminRoomEdittingScreen(pt.getSo_phong());
+                    frame.setVisible(false);
+                }catch(ClassNotFoundException | SQLException ex){
+                    ex.printStackTrace();
+                }
+            } 
+        } );
+            frame.add(button);
             i++;
         }
         JButton button1 = new JButton("Xóa");
@@ -174,10 +169,54 @@ public class adminViewListRoomScreen {
         button3.setBackground(new Color(91, 253, 34));
         button3.setBounds(380,480, 100, 45);
         frame.add(button3);
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
+        JMenu homeMenu = new JMenu("Home");
+        JMenu infoMenu = new JMenu("Quản lý khách hàng");
+        JMenu roomMenu = new JMenu("Quản lý phòng");
+        JMenu billMenu = new JMenu("Quản lý hóa đơn");
+        JMenu messageMenu = new JMenu("Quản lý tin nhắn");
+        roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListRoomMouseClicked(evt);
+            }
+        });
+        billMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListBillMouseClicked(evt);
+            }
+        });
+        menuBar.add(homeMenu);
+        menuBar.add(infoMenu);
+        menuBar.add(roomMenu);
+        menuBar.add(billMenu);
+        menuBar.add(messageMenu);
+
+        frame.setJMenuBar(menuBar);
+
         
         frame.add(main_content);
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true); // make window visible
     }
+    private void viewListRoomMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            frame.setVisible(false);
+            var a = new adminViewListRoomScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
+    private void viewListBillMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            frame.setVisible(false);
+            var a = new adminBillViewListScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
+    
 }

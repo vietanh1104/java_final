@@ -167,6 +167,24 @@ public class PhongTro {
             // close connection
         connection.close();
     }
+    public PhongTro getRoomById(int roomId) throws ClassNotFoundException, SQLException{
+         var connection = getConnection();
+        var stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("select pt.id, pt.so_phong, pt.co_so_vat_chat,"
+                + " pt.tinh_trang_su_dung, pt.kha_nang_su_dung, pt.gia_phong,"
+                + " pt.gia_dien, pt.gia_nuoc, pt.phu_thu from phongtro pt "
+                + " where id = " + roomId );
+        var a = new PhongTro();
+            // show data
+        while(rs.next()){
+            var res = new PhongTro( rs.getInt(2),rs.getString(3),
+                rs.getString(4),rs.getString(5),rs.getFloat(6), rs.getFloat(7),
+                rs.getFloat(8), rs.getFloat(9));
+            return res;
+        }
+        return a;
+    }
+    
     
     private Connection getConnection()throws SQLException, ClassNotFoundException{
         

@@ -159,8 +159,9 @@ class adminRoomAddingMainContent extends JComponent{
 }
 
 public class adminRoomAddingScreen {
+    private JFrame frame;
     public adminRoomAddingScreen(){
-        var frame = new JFrame("Phần mềm quản lý phòng trọ");
+        frame = new JFrame("Phần mềm quản lý phòng trọ");
         String windowContent = "Thêm mới phòng";
         adminRoomAddingMainContent main_component = new adminRoomAddingMainContent(windowContent) ;
         
@@ -277,6 +278,23 @@ public class adminRoomAddingScreen {
                 frame.setVisible(false);
             } 
         } );
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
+        JMenu homeMenu = new JMenu("Home");
+        JMenu infoMenu = new JMenu("Quản lý khách hàng");
+        JMenu roomMenu = new JMenu("Quản lý phòng");
+        JMenu billMenu = new JMenu("Quản lý hóa đơn");
+        JMenu messageMenu = new JMenu("Quản lý tin nhắn");
+        roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListRoomMouseClicked(evt);
+            }
+        });
+        billMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListBillMouseClicked(evt);
+            }
+        });
         frame.add(button);
         frame.add(main_component);
               
@@ -284,5 +302,23 @@ public class adminRoomAddingScreen {
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true); // make window visible
-    }  
+    } 
+    private void viewListRoomMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            frame.setVisible(false);
+            var a = new adminViewListRoomScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
+    private void viewListBillMouseClicked(java.awt.event.MouseEvent evt) {
+        try{
+            frame.setVisible(false);
+            var a = new adminBillViewListScreen();
+        }
+        catch(ClassNotFoundException | SQLException ex){
+            ex.printStackTrace();     
+        }
+    }
 }

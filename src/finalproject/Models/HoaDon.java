@@ -13,17 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.*;
 import java.util.ArrayList;
-
 import java.util.Date;
 
-/**
- *
-<<<<<<< HEAD
- * @author Dell
-=======
- * @author anhvi
 
- */
 public class HoaDon {
     private int id;
     private int so_dien;
@@ -32,7 +24,6 @@ public class HoaDon {
     private Date han_dong;
     private int idPT;
 
-
     public int getId() {
         return id;
     }
@@ -40,6 +31,7 @@ public class HoaDon {
     public void setId(int id) {
         this.id = id;
     }
+
     public HoaDon(int id, int so_dien, int so_nuoc, Date ngay_tao, Date han_dong, int idPT) {
         this.id = id;
         this.so_dien = so_dien;
@@ -67,6 +59,7 @@ public class HoaDon {
     public void setSo_nuoc(int so_nuoc) {
         this.so_nuoc = so_nuoc;
     }
+
     public Date getNgay_tao() {
         return ngay_tao;
     }
@@ -85,11 +78,9 @@ public class HoaDon {
         this.han_dong = han_dong;
     }
 
-
     public int getIdPT() {
         return idPT;
     }
-
 
     public void setIdPT(int idPT) {
         this.idPT = idPT;
@@ -109,6 +100,7 @@ public class HoaDon {
                 rs.getDate(4),rs.getDate(5),rs.getInt(6));
             a.add(res);
         }
+        connection.close();
         return a;
     }
     public float getTotalBill(int billId) throws ClassNotFoundException, SQLException{

@@ -8,24 +8,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.*;
 import java.util.ArrayList;
-
 import java.util.Date;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-import java.util.Date;
 
-/**
- *
- * @author Dell
-=======
 
-/**
- *
- * @author anhvi
- */
 public class KhachHang {
     private int id;
     private String ho_ten;
@@ -127,6 +118,7 @@ public class KhachHang {
         this.ten_tai_khoan = ten_tai_khoan;
     }
     
+
     public KhachHang() {
     }
     public String getFullnameByRoomId(int roomId) throws ClassNotFoundException, SQLException{

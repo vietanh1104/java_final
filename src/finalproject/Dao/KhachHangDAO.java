@@ -23,12 +23,13 @@ public class KhachHangDAO {
 			ResultSet rs = st.executeQuery(sql);
 			while(rs.next()) {
                             tkh = rs.getString("ho_ten");
-			}
-			Connect.closeConnection(conn);
+			}			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+                        
 		}
+                Connect.closeConnection(conn);
 		return tkh;
 	}
 }

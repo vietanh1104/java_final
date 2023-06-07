@@ -19,7 +19,8 @@ public class FinalProject {
 
     public static void main(String[] args) throws ClassNotFoundException  {
         // TODO code application logic here
-        new UsersManagementFrame();
-        
+        new UserDetailFrame();
+        //new AddUserFrame();
+        //new UsersManagementFrame();
     }
 }

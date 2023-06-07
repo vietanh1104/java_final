@@ -196,7 +196,7 @@ public class KhachHang {
         int kt = 0;
         Connection conn = getConnection();
         var st = conn.createStatement();
-        String sql = "UPDATE KhachHang SET ho_ten='" + k.getHo_ten() + "',ngay_sinh='" + k.getNgay_sinh() + "',sdt='" + k.getSdt() + "',cccd='" + k.getCccd() + "',dia_chi='" + k.getDia_chi() + "',gmail='" + k.getGmail() + "',ten_tai_khoan='" + k.getTen_tai_khoan() + "' WHERE idKH = " + k.getId();
+        String sql = "UPDATE KhachHang SET ho_ten='" + k.getHo_ten() + "',ngay_sinh='" + k.getNgay_sinh() + "',sdt='" + k.getSdt() + "',cccd='" + k.getCccd() + "',dia_chi='" + k.getDia_chi() + "',gmail='" + k.getGmail() + "',ten_tai_khoan='" + k.getTen_tai_khoan() + "' WHERE `idKH` = " + k.getId();
         kt = st.executeUpdate(sql);
         conn.close();
         return kt;

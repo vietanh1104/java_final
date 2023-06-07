@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
+import java.text.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,10 +20,61 @@ public class UpdateInfoFrame {
     private KhachHang kh = new KhachHang();
 
     public UpdateInfoFrame(int id) throws SQLException, ClassNotFoundException {
-        System.out.print(id);
+        
         JFrame updateFrame = new JFrame("Phòng trọ nhóm 5");
         Font font = new Font("Inter", Font.PLAIN, 28);
         kh = kh.SelectKHById(id);
+        
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
+        JMenu homeMenu = new JMenu("Home");
+        JMenu infoMenu = new JMenu("Thông tin cá nhân");
+        JMenu billMenu = new JMenu("Hóa đơn");
+        JMenu roomMenu = new JMenu("Thông tin phòng");
+        JMenu messageMenu = new JMenu("Tin nhắn");
+        billMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListRoomMouseClicked(evt);
+            }
+
+            private void viewListRoomMouseClicked(MouseEvent evt) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        infoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListCustomersMouseClicked(evt);
+            }
+
+            private void viewListCustomersMouseClicked(MouseEvent evt) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListBillMouseClicked(evt);
+            }
+
+            private void viewListBillMouseClicked(MouseEvent evt) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        messageMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListMessageMouseClicked(evt);
+            }
+
+            private void viewListMessageMouseClicked(MouseEvent evt) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        menuBar.add(homeMenu);
+        menuBar.add(infoMenu);
+        menuBar.add(billMenu);
+        menuBar.add(roomMenu);
+        menuBar.add(messageMenu);
+        
+        updateFrame.setJMenuBar(menuBar);
 
         JLabel lb1 = new JLabel("Thông tin cá nhân");
         lb1.setFont(font);
@@ -121,18 +174,38 @@ public class UpdateInfoFrame {
                     Logger.getLogger(DangNhapFrame.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ClassNotFoundException ex) {
                     Logger.getLogger(DangNhapFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ParseException ex) {
+                    Logger.getLogger(UpdateInfoFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
-            private void loginMouseClicked(MouseEvent evt) throws SQLException, ClassNotFoundException {
-                
-                
-                
-                JFrame frame = new JFrame("Thông báo");
-                JOptionPane.showMessageDialog(frame,
-                        "Cập nhật thành công",
-                        "Cập nhật",
-                        JOptionPane.ERROR_MESSAGE);
+            private void loginMouseClicked(MouseEvent evt) throws SQLException, ClassNotFoundException, ParseException {
+
+                kh.setHo_ten(tf1.getText());
+                String sdate = tf2.getText();
+                Date date = new SimpleDateFormat("yyyy/MM/dd").parse(sdate);
+                kh.setNgay_sinh(date);
+                kh.setSdt(tf3.getText());
+                kh.setCccd(tf4.getText());
+                kh.setDia_chi(tf5.getText());
+                kh.setGmail(tf6.getText());
+                kh.setTen_tai_khoan(tf7.getText());
+
+                int kt = kh.UpdateKhachHang(kh);
+                if (kt != 0) {
+                    JFrame frame = new JFrame("Thông báo");
+                    JOptionPane.showMessageDialog(frame,
+                            "Cập nhật thành công",
+                            "Cập nhật",
+                            JOptionPane.ERROR_MESSAGE);
+                } else {
+                    JFrame frame = new JFrame("Thông báo");
+                    JOptionPane.showMessageDialog(frame,
+                            "Cập nhật thất bại",
+                            "Cập nhật",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+
             }
         });
         updateFrame.setBounds(200, 100, 800, 600);

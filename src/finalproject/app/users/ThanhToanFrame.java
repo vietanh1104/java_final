@@ -5,6 +5,7 @@
 package finalproject.app.users;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 /**
@@ -16,7 +17,56 @@ public class ThanhToanFrame extends JFrame{
     public ThanhToanFrame() {
         JFrame thanhToanFrame = new JFrame("Phòng trọ nhóm 5");
         thanhToanFrame.setBounds(200, 100, 800, 600);
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
+        JMenu homeMenu = new JMenu("Home");
+        JMenu infoMenu = new JMenu("Thông tin cá nhân");
+        JMenu billMenu = new JMenu("Hóa đơn");
+        JMenu roomMenu = new JMenu("Thông tin phòng");
+        JMenu messageMenu = new JMenu("Tin nhắn");
+        billMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListRoomMouseClicked(evt);
+            }
+
+            private void viewListRoomMouseClicked(MouseEvent evt) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        infoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListCustomersMouseClicked(evt);
+            }
+
+            private void viewListCustomersMouseClicked(MouseEvent evt) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListBillMouseClicked(evt);
+            }
+
+            private void viewListBillMouseClicked(MouseEvent evt) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        messageMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListMessageMouseClicked(evt);
+            }
+
+            private void viewListMessageMouseClicked(MouseEvent evt) {
+                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            }
+        });
+        menuBar.add(homeMenu);
+        menuBar.add(infoMenu);
+        menuBar.add(billMenu);
+        menuBar.add(roomMenu);
+        menuBar.add(messageMenu);
         
+        thanhToanFrame.setJMenuBar(menuBar);
         Font font = new Font("Inter", Font.BOLD, 28);
         
         JLabel lb = new JLabel("Hóa Đơn");

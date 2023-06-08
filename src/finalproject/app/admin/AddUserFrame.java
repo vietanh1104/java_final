@@ -4,19 +4,23 @@
  */
 package finalproject.app.admin;
 
+import finalproject.Views.DSTinNhanAdminView;
 import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
-
 
 /**
  *
  * @author Dell
  */
 public class AddUserFrame {
-    public AddUserFrame(){
+
+    public AddUserFrame() {
         JFrame addUserFrame = new JFrame("Phòng trọ nhóm 5");
-        
+
         JMenuBar menuBar = new JMenuBar();
         menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
         JMenu homeMenu = new JMenu("Home");
@@ -26,21 +30,64 @@ public class AddUserFrame {
         JMenu messageMenu = new JMenu("Quản lý tin nhắn");
         roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewListRoomMouseClicked(evt);
+                try {
+                    viewListRoomMouseClicked(evt);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(AddUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
-            private void viewListRoomMouseClicked(MouseEvent evt) {
-                
+            private void viewListRoomMouseClicked(MouseEvent evt) throws ClassNotFoundException, SQLException {
+                addUserFrame.setVisible(false);
+                var a = new adminViewListRoomScreen();
             }
+
         });
         billMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewListBillMouseClicked(evt);
+                try {
+                    viewListBillMouseClicked(evt);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(AddUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
-            private void viewListBillMouseClicked(MouseEvent evt) {
-                
+            private void viewListBillMouseClicked(MouseEvent evt) throws ClassNotFoundException, SQLException {
+                addUserFrame.setVisible(false);
+                try {
+                    var a = new adminBillViewListScreen();
+                } catch (SQLException ex) {
+                    Logger.getLogger(AddUserFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+
+        });
+        infoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListCustomersMouseClicked(evt);
+            }
+
+            private void viewListCustomersMouseClicked(MouseEvent evt) {
+                addUserFrame.setVisible(false);
+                var a = new UsersManagementFrame();
+            }
+        });
+        messageMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListMessageMouseClicked(evt);
+            }
+
+            private void viewListMessageMouseClicked(MouseEvent evt) {
+                addUserFrame.setVisible(false);
+                var a = new DSTinNhanAdminView();
+                a.setVisible(true);
+            }
+
+            
         });
         menuBar.add(homeMenu);
         menuBar.add(infoMenu);
@@ -48,9 +95,8 @@ public class AddUserFrame {
         menuBar.add(billMenu);
         menuBar.add(messageMenu);
 
-        
         addUserFrame.setJMenuBar(menuBar);
-        
+
         Font font = new Font("Inter", Font.PLAIN, 28);
 
         JLabel lb1 = new JLabel("Thêm mới khách hàng");
@@ -84,7 +130,7 @@ public class AddUserFrame {
         JTextField tf2 = new JTextField();
         tf2.setBounds(200, 68, 400, 40);
         pn.add(tf2);
-        
+
         JLabel lb4 = new JLabel("Số điện thoại:");
         lb4.setBounds(65, 120, 110, 40);
         lb4.setFont(font);
@@ -93,7 +139,7 @@ public class AddUserFrame {
         JTextField tf3 = new JTextField();
         tf3.setBounds(200, 118, 400, 40);
         pn.add(tf3);
-        
+
         JLabel lb5 = new JLabel("Số CCCD:");
         lb5.setBounds(65, 170, 110, 40);
         lb5.setFont(font);
@@ -102,7 +148,7 @@ public class AddUserFrame {
         JTextField tf4 = new JTextField();
         tf4.setBounds(200, 168, 400, 40);
         pn.add(tf4);
-        
+
         JLabel lb6 = new JLabel("Địa chỉ:");
         lb6.setBounds(65, 220, 110, 40);
         lb6.setFont(font);
@@ -111,7 +157,7 @@ public class AddUserFrame {
         JTextField tf5 = new JTextField();
         tf5.setBounds(200, 218, 400, 40);
         pn.add(tf5);
-        
+
         JLabel lb7 = new JLabel("Gmail:");
         lb7.setBounds(65, 270, 110, 40);
         lb7.setFont(font);
@@ -120,7 +166,7 @@ public class AddUserFrame {
         JTextField tf6 = new JTextField();
         tf6.setBounds(200, 268, 400, 40);
         pn.add(tf6);
-        
+
         JLabel lb8 = new JLabel("Tên tài khoản:");
         lb8.setBounds(65, 320, 110, 40);
         lb8.setFont(font);
@@ -129,7 +175,7 @@ public class AddUserFrame {
         JTextField tf7 = new JTextField();
         tf7.setBounds(200, 318, 400, 40);
         pn.add(tf7);
-        
+
         JLabel lb9 = new JLabel("Mật khẩu:");
         lb9.setBounds(65, 370, 110, 40);
         lb9.setFont(font);
@@ -138,7 +184,7 @@ public class AddUserFrame {
         JTextField tf8 = new JTextField();
         tf8.setBounds(200, 368, 400, 40);
         pn.add(tf8);
-        
+
         JLabel lb10 = new JLabel("Phòng:");
         lb10.setBounds(65, 420, 110, 40);
         lb10.setFont(font);
@@ -147,17 +193,29 @@ public class AddUserFrame {
         JTextField tf9 = new JTextField();
         tf9.setBounds(200, 418, 400, 40);
         pn.add(tf9);
-        
+
         JButton bt = new JButton("Xác nhận");
         bt.setBounds(325, 480, 100, 50);
         bt.setBackground(new Color(255, 155, 73));
         bt.setCursor(new Cursor(Cursor.HAND_CURSOR));
         pn.add(bt);
         
+        bt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listCustomersMouseClicked(evt);
+            }
+
+            private void listCustomersMouseClicked(MouseEvent evt) {
+                addUserFrame.setVisible(false);
+                var a = new UsersManagementFrame();
+            }
+        });
+
         addUserFrame.setBounds(200, 50, 800, 730);
         addUserFrame.setLayout(null);
         addUserFrame.setResizable(false);
         addUserFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         addUserFrame.setVisible(true);
     }
+
 }

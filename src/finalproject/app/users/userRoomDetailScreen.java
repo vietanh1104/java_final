@@ -3,23 +3,28 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package finalproject.app.users;
+
 import finalproject.Models.*;
-import finalproject.app.admin.adminRoomEdittingScreen;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.*;  
-import javax.swing.border.*;  
+import javax.swing.*;
+import javax.swing.border.*;
+
 /**
  *
  * @author anhvi
  */
-class userRoomDetailMainContent extends JComponent{
+class userRoomDetailMainContent extends JComponent {
+
     private String text;
     private int roomId;
     private String address;
@@ -36,18 +41,18 @@ class userRoomDetailMainContent extends JComponent{
         this.infrastructure = infrastructure;
         this.image = image;
     }
+
     @Override
-    public void paint(Graphics g) {        
+    public void paint(Graphics g) {
         Graphics2D graphics2 = (Graphics2D) g;
-        graphics2.setColor(new Color(0,202,177));
+        graphics2.setColor(new Color(0, 202, 177));
         graphics2.fillRoundRect(17, 100, 750, 445, 10, 10);
-        
-        graphics2.setColor(new Color(0,4,2));
+
+        graphics2.setColor(new Color(0, 4, 2));
         graphics2.setStroke(new BasicStroke(1));
-        
+
         graphics2.drawRoundRect(17, 100, 750, 445, 10, 10);
-        
-        
+
         // Set the font and color for the text
         Font font = new Font("Arial", Font.PLAIN, 48);
         graphics2.setFont(font);
@@ -57,52 +62,50 @@ class userRoomDetailMainContent extends JComponent{
         FontMetrics fm = graphics2.getFontMetrics(font);
         int textWidth = fm.stringWidth(this.text);
         int textX = (800 - textWidth) / 2;
-            
+
         // Draw the text
         graphics2.drawString(this.text, textX, 70);
-        
+
         // label Số phòng
         // Set the font and color for the text
         text = "Số phòng:";
         font = new Font("Arial", Font.PLAIN, 15);
         graphics2.setFont(font);
         graphics2.setColor(Color.BLACK);
-            
+
         // Draw the text
         graphics2.drawString(this.text, 80, 170);
-        
-        
-        
+
         // label Địa chỉ
         // Set the font and color for the text
         text = "Địa chỉ:";
         font = new Font("Arial", Font.PLAIN, 15);
         graphics2.setFont(font);
         graphics2.setColor(Color.BLACK);
-            
+
         // Draw the text
         graphics2.drawString(this.text, 80, 220);
-        
+
         // label Trạng thái
         // Set the font and color for the text
         text = "Trạng thái:";
         font = new Font("Arial", Font.PLAIN, 15);
         graphics2.setFont(font);
         graphics2.setColor(Color.BLACK);
-            
+
         // Draw the text
         graphics2.drawString(this.text, 80, 270);
-        
+
         // label Cơ sở vật chất
         // Set the font and color for the text
         text = "Cơ sở vật chất:";
         font = new Font("Arial", Font.PLAIN, 15);
         graphics2.setFont(font);
         graphics2.setColor(Color.BLACK);
-            
+
         // Draw the text
         graphics2.drawString(this.text, 80, 320);
-        
+
         // roomId
         JTextField roomIdTextField = new JTextField(String.valueOf(this.roomId));
         roomIdTextField.setHorizontalAlignment(SwingConstants.LEFT);
@@ -117,7 +120,7 @@ class userRoomDetailMainContent extends JComponent{
         Border compoundBorder = BorderFactory.createCompoundBorder(roundedBorder, BorderFactory.createEmptyBorder(0, borderRadius, 0, borderRadius));
         roomIdTextField.setBorder(compoundBorder);
         add(roomIdTextField);
-        
+
         // address   
         JTextField addressTextField = new JTextField(this.address);
         addressTextField.setHorizontalAlignment(SwingConstants.LEFT);
@@ -129,7 +132,7 @@ class userRoomDetailMainContent extends JComponent{
         // Create a rounded border
         addressTextField.setBorder(compoundBorder);
         add(addressTextField);
-        
+
         // status
         JTextField statusTextField = new JTextField(this.status);
         statusTextField.setHorizontalAlignment(SwingConstants.LEFT);
@@ -141,7 +144,7 @@ class userRoomDetailMainContent extends JComponent{
         // Create a rounded border
         statusTextField.setBorder(compoundBorder);
         add(statusTextField);
-        
+
         // infrastructure
         JTextField infrastructureTextField = new JTextField(this.infrastructure);
         infrastructureTextField.setHorizontalAlignment(SwingConstants.LEFT);
@@ -153,34 +156,37 @@ class userRoomDetailMainContent extends JComponent{
         // Create a rounded border
         infrastructureTextField.setBorder(compoundBorder);
         add(infrastructureTextField);
-        
-        
+
         // image
-        String filepath = "C:\\Users\\anhvi\\Desktop\\java\\java_final\\src\\finalproject\\app\\staticFiles\\" + image;
+        String filepath = "C:\\Users\\Dell\\OneDrive\\Máy tính\\java\\project\\java_final\\src\\finalproject\\app\\staticFiles" + image;
         BufferedImage image = null;
-        try{
+        try {
             BufferedImage originalImage = ImageIO.read(new File(filepath)); // Replace with the path to your image file
             image = resizeImage(originalImage, 180, 180);
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        if(image != null){
-                g.drawImage(image, 560, 140, null);
+        if (image != null) {
+            g.drawImage(image, 560, 140, null);
         }
-    } 
+    }
+
     private BufferedImage resizeImage(BufferedImage originalImage, int targetWidth, int targetHeight) {
-            BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
-            Graphics2D g2d = resizedImage.createGraphics();
-            g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
-            g2d.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
-            g2d.dispose();
-            return resizedImage;
+        BufferedImage resizedImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2d = resizedImage.createGraphics();
+        g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+        g2d.drawImage(originalImage, 0, 0, targetWidth, targetHeight, null);
+        g2d.dispose();
+        return resizedImage;
     }
 }
+
 public class userRoomDetailScreen {
+
     private int idKH;
     private JFrame frame;
-    public userRoomDetailScreen(int idKH) throws SQLException, ClassNotFoundException{
+
+    public userRoomDetailScreen(int idKH) throws SQLException, ClassNotFoundException {
         this.idKH = idKH;
         frame = new JFrame("Phần mềm quản lý phòng trọ");
         String windowContent = "Thông tin phòng";
@@ -191,10 +197,10 @@ public class userRoomDetailScreen {
         String status = roomDetail.getTinh_trang_su_dung();
         String infrastructure = roomDetail.getCo_so_vat_chat();
         String image = "room201.jpg";
-        userRoomDetailMainContent main_component = new userRoomDetailMainContent(windowContent,roomId,
-                address,status,infrastructure, image) ;
+        userRoomDetailMainContent main_component = new userRoomDetailMainContent(windowContent, roomId,
+                address, status, infrastructure, image);
         frame.add(main_component);
-        
+
         JMenuBar menuBar = new JMenuBar();
         menuBar.setLayout(new BoxLayout(menuBar, BoxLayout.X_AXIS));
 
@@ -203,12 +209,43 @@ public class userRoomDetailScreen {
         JMenu roomMenu = new JMenu("Thông tin phòng");
         JMenu billMenu = new JMenu("Hóa đơn");
         JMenu messageMenu = new JMenu("Tin nhắn");
-        roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+        billMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu5MouseClicked(evt);
+                viewListRoomMouseClicked(evt);
+            }
+
+            private void viewListRoomMouseClicked(MouseEvent evt) {
+                frame.setVisible(false);
+                var a = new ThanhToanFrame(idKH);
+            }
+        });
+        infoMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                try {
+                    viewListCustomersMouseClicked(evt);
+                } catch (SQLException ex) {
+                    Logger.getLogger(ThanhToanFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(ThanhToanFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+            private void viewListCustomersMouseClicked(MouseEvent evt) throws SQLException, ClassNotFoundException {
+
+                frame.setVisible(false);
+                var a = new UpdateInfoFrame(idKH);
             }
         });
 
+        messageMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewListMessageMouseClicked(evt);
+            }
+
+            private void viewListMessageMouseClicked(MouseEvent evt) {
+                
+            }
+        });
 
         menuBar.add(homeMenu);
         menuBar.add(infoMenu);
@@ -217,18 +254,11 @@ public class userRoomDetailScreen {
         menuBar.add(messageMenu);
 
         frame.setJMenuBar(menuBar);
-        
+
         frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true); // make window visible
     }
-    private void jMenu5MouseClicked(java.awt.event.MouseEvent evt) {
-        try{
-            frame.setVisible(false);
-            var a = new userRoomDetailScreen(this.idKH);
-        }
-        catch(ClassNotFoundException | SQLException ex){
-            ex.printStackTrace();     
-        }
-    }
+
+    
 }

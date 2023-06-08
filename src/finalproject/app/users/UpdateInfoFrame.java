@@ -39,17 +39,24 @@ public class UpdateInfoFrame {
 
             private void viewListRoomMouseClicked(MouseEvent evt) {
                 updateFrame.setVisible(false);
-                var a = new ThanhToanFrame();
+                var a = new ThanhToanFrame(id);
             }
         });
         
         roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewListBillMouseClicked(evt);
+                try {
+                    viewListBillMouseClicked(evt);
+                } catch (SQLException ex) {
+                    Logger.getLogger(UpdateInfoFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(UpdateInfoFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
-            private void viewListBillMouseClicked(MouseEvent evt) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            private void viewListBillMouseClicked(MouseEvent evt) throws SQLException, ClassNotFoundException {
+                updateFrame.setVisible(false);
+                var a = new userRoomDetailScreen(id);
             }
         });
         messageMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -58,7 +65,7 @@ public class UpdateInfoFrame {
             }
 
             private void viewListMessageMouseClicked(MouseEvent evt) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                
             }
         });
         menuBar.add(homeMenu);

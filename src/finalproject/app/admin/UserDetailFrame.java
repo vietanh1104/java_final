@@ -17,7 +17,7 @@ import javax.swing.*;
 public class UserDetailFrame {
     
     private JFrame userDetailFrame;
-    public UserDetailFrame(){
+    public UserDetailFrame(int id){
         userDetailFrame = new JFrame("Quản lý phòng trọ");
         
         JMenuBar menuBar = new JMenuBar();

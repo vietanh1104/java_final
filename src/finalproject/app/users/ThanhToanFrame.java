@@ -17,7 +17,7 @@ import javax.swing.*;
  */
 public class ThanhToanFrame extends JFrame{
 
-    public ThanhToanFrame() {
+    public ThanhToanFrame(int id) {
         JFrame thanhToanFrame = new JFrame("Phòng trọ nhóm 5");
         thanhToanFrame.setBounds(200, 100, 800, 650);
         JMenuBar menuBar = new JMenuBar();
@@ -47,11 +47,18 @@ public class ThanhToanFrame extends JFrame{
         });
         roomMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                viewListBillMouseClicked(evt);
+                try {
+                    viewListBillMouseClicked(evt);
+                } catch (SQLException ex) {
+                    Logger.getLogger(UpdateInfoFrame.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(UpdateInfoFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
 
-            private void viewListBillMouseClicked(MouseEvent evt) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            private void viewListBillMouseClicked(MouseEvent evt) throws SQLException, ClassNotFoundException {
+                thanhToanFrame.setVisible(false);
+                var a = new userRoomDetailScreen(id);
             }
         });
         messageMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -60,7 +67,7 @@ public class ThanhToanFrame extends JFrame{
             }
 
             private void viewListMessageMouseClicked(MouseEvent evt) {
-                throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                
             }
         });
         menuBar.add(homeMenu);

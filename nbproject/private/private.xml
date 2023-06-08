@@ -3,36 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            <file>file:/D:/lt%20java/finalproj/java_final/src/finalproject/Dao/TinNhanDAO.java</file>
-            <file>file:/D:/lt%20java/finalproj/java_final/src/finalproject/Views/TinNhanAdminView.java</file>
-            <file>file:/D:/lt%20java/finalproj/java_final/src/finalproject/Views/TinNhanUserView.java</file>
-            <file>file:/D:/lt%20java/finalproj/java_final/src/finalproject/Dao/KhachHangDAO.java</file>
-            <file>file:/D:/lt%20java/finalproj/java_final/src/finalproject/Views/DSTinNhanAdminView.java</file>
-=======
-            <file>file:/C:/Users/anhvi/Desktop/java/java_final/src/finalproject/app/admin/adminViewListRoomScreen.java</file>
-            <file>file:/C:/Users/anhvi/Desktop/java/java_final/src/finalproject/app/admin/adminRoomAddingScreen.java</file>
-            <file>file:/C:/Users/anhvi/Desktop/java/java_final/src/finalproject/FinalProject.java</file>
-            <file>file:/C:/Users/anhvi/Desktop/java/java_final/src/finalproject/app/users/userRoomDetailScreen.java</file>
-            <file>file:/C:/Users/anhvi/Desktop/java/java_final/src/finalproject/Models/PhongTro.java</file>
-            <file>file:/C:/Users/anhvi/Desktop/java/java_final/src/finalproject/Models/TaiKhoan.java</file>
-            <file>file:/C:/Users/anhvi/Desktop/java/java_final/src/finalproject/app/admin/adminRoomEdittingScreen.java</file>
-            <file>file:/C:/Users/anhvi/Desktop/java/java_final/src/finalproject/window_base.java</file>
-            <file>file:/C:/Users/anhvi/Desktop/java/java_final/src/finalproject/Components/RectangleComponent.java</file>
->>>>>>> vanh
-=======
-            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/FinalProject.java</file>
-            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/app/admin/UsersManagementFrame.java</file>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/app/admin/UserDetailFrame.java</file>
-            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/Models/DbConnect.java</file>
-            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/app/admin/AddUserFrame.java</file>
-            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/Models/KhachHang.java</file>
-=======
+            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/app/users/DangNhapFrame.java</file>
             <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/app/users/ThanhToanFrame.java</file>
->>>>>>> origin/hieulv
->>>>>>> 216b013eddb6645d485dba9c906fd378426a9847
+            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/app/users/UpdateInfoFrame.java</file>
+            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/app/users/userRoomDetailScreen.java</file>
+            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/Models/KhachHang.java</file>
+            <file>file:/C:/Users/Dell/OneDrive/Máy%20tính/java/project/java_final/src/finalproject/Models/TaiKhoan.java</file>
         </group>
     </open-files>
 </project-private>
